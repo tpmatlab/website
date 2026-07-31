@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{%- block body %}
+<style>
+  header, footer { background-color: color-mix(in srgb, white 75%, transparent); }
+</style>
+
+  {{ page.body }}
+
+
+<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<b>The background of this page
+   is inspired by the way images are represented digitally, where each pixel stores a color.
+    Their three-dimensional counterparts, voxels, form the basis of many full-field analyses.
+  </b></div>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Offscreen canvas caches the static grid lines + nodes so they are only
+// re-rendered when the layout changes (resize / cell-size change), not
+// every animation frame.
+const gridCanvas = document.createElement('canvas');
+const gctx = gridCanvas.getContext('2d');
+
+let width, height;
+let cols, rows;
+let cells = [];   // cells[r][c] = { state: bool, flipAt: int, accentIdx: int }
+
+let cellSize    = 48;
+let flipFreq    = 10;   // slider 0-100
+let lineWidthUI = 8;
+let showNodes   = false;
+let useAccent   = false;
+let t           = 0;
+let animating   = false;
+
+const accentColors = ['#E8322A', '#2F6FE0', '#4CAF6E', '#F5B921'];
+const bgFill    = '#ffffff';
+const edgeColor = 'rgba(30,30,30,0.15)';
+const nodeColor = 'rgba(30,30,30,0.40)';
+const fillA     = '#ffffff';
+const fillB     = 'rgba(30,144,255,0.25)';
+
+function parseColor(css) {
+  const tmp = document.createElement('canvas');
+  tmp.width = tmp.height = 1;
+  const c = tmp.getContext('2d');
+  c.fillStyle = '#ffffff'; c.fillRect(0, 0, 1, 1);
+  c.fillStyle = css;       c.fillRect(0, 0, 1, 1);
+  const d = c.getImageData(0, 0, 1, 1).data;
+  return { r: d[0], g: d[1], b: d[2] };
+}
+
+const colorA = parseColor(fillA);
+const colorB = parseColor(fillB);
+
+const MARGIN_CELLS = 1;
+
+// How many frames until a given cell next flips.
+// At freq=0 → never; at freq=100 → every ~6 frames on average.
+function randomDelay() {
+  if (flipFreq === 0) return Infinity;
+  const meanMs = Math.max(100, 60000 / flipFreq);
+  return performance.now() + Math.max(50, -meanMs * Math.log(Math.random() + 1e-9));
+}
+
+function resize() {
+  width  = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width  = gridCanvas.width  = width  * devicePixelRatio;
+  canvas.height = gridCanvas.height = height * devicePixelRatio;
+  canvas.style.width  = width  + 'px';
+  canvas.style.height = height + 'px';
+  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+  gctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+  buildGrid();
+  if (flipFreq > 0) startLoop();
+  else renderFrame();
+}
+function buildGrid() {
+  cols = Math.ceil(width  / cellSize) + MARGIN_CELLS * 2 + 1;
+  rows = Math.ceil(height / cellSize) + MARGIN_CELLS * 2 + 1;
+
+  const originX = -MARGIN_CELLS * cellSize;
+  const originY = -MARGIN_CELLS * cellSize;
+
+  cells = [];
+  for (let r = 0; r < rows - 1; r++) {
+    cells[r] = [];
+    for (let c = 0; c < cols - 1; c++) {
+      cells[r][c] = {
+        target:    Math.random() < 0.5 ? 1 : 0,
+        progress:  Math.random() < 0.5 ? 1 : 0,
+        flipAt:    randomDelay(),
+        accentIdx: Math.floor(Math.random() * accentColors.length)
+      };
+    }
+  }
+
+  // Pre-render grid lines (and nodes) to the offscreen canvas.
+  gctx.clearRect(0, 0, width, height);
+  const lw = lineWidthUI / 10;
+  gctx.strokeStyle = edgeColor;
+  gctx.lineWidth = lw;
+
+  for (let r = 0; r < rows; r++) {
+    const y = originY + r * cellSize;
+    gctx.beginPath();
+    gctx.moveTo(originX, y);
+    gctx.lineTo(originX + (cols - 1) * cellSize, y);
+    gctx.stroke();
+  }
+  for (let c = 0; c < cols; c++) {
+    const x = originX + c * cellSize;
+    gctx.beginPath();
+    gctx.moveTo(x, originY);
+    gctx.lineTo(x, originY + (rows - 1) * cellSize);
+    gctx.stroke();
+  }
+
+  if (showNodes) {
+    const nr = Math.max(1.2, lw * 1.8);
+    gctx.fillStyle = nodeColor;
+    gctx.beginPath();
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const x = originX + c * cellSize;
+        const y = originY + r * cellSize;
+        gctx.moveTo(x + nr, y);
+        gctx.arc(x, y, nr, 0, Math.PI * 2);
+      }
+    }
+    gctx.fill();
+  }
+}
+
+function step() {
+  const now = performance.now();
+  for (let r = 0; r < rows - 1; r++) {
+    for (let c = 0; c < cols - 1; c++) {
+      const cell = cells[r][c];
+      if (now >= cell.flipAt) {
+        cell.target = 1 - cell.target;
+        cell.flipAt = randomDelay();
+      }
+      cell.progress += (cell.target - cell.progress) * 0.06;
+    }
+  }
+}
+
+function drawCells() {
+  const originX = -MARGIN_CELLS * cellSize;
+  const originY = -MARGIN_CELLS * cellSize;
+  for (let r = 0; r < rows - 1; r++) {
+    for (let c = 0; c < cols - 1; c++) {
+      const cell = cells[r][c];
+      const p = cell.progress;
+      const rv = Math.round(colorA.r + (colorB.r - colorA.r) * p);
+      const gv = Math.round(colorA.g + (colorB.g - colorA.g) * p);
+      const bv = Math.round(colorA.b + (colorB.b - colorA.b) * p);
+      ctx.fillStyle = `rgb(${rv},${gv},${bv})`;
+      ctx.fillRect(originX + c * cellSize, originY + r * cellSize, cellSize, cellSize);
+    }
+  }
+}
+
+function renderFrame() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = bgFill;
+  ctx.fillRect(0, 0, width, height);
+  drawCells();
+  ctx.drawImage(gridCanvas, 0, 0, width, height);
+}
+
+function draw() {
+  step();
+  renderFrame();
+  if (animating) requestAnimationFrame(draw);
+}
+
+function startLoop() {
+  if (!animating) { animating = true; draw(); }
+}
+
+window.addEventListener('resize', resize);
+
+resize();
+colorA = parseColor(fillA);
+colorB = parseColor(fillB);
+startLoop();
+</script>
+
+{%- endblock %}

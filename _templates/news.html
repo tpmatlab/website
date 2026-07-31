@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{%- block content %}
+  <article class="flow">
+    <h1>{{ page.title }}</h1>
+    <p class="text-muted">
+      Published on {{ page.date|replace("-", "/") }} by {{ page.author }}.
+    </p>
+    {{ page.body }}
+    <p class="text-right">
+      <a href="{{ site["news/index"].path|relative_to(page.path) }}">
+        <i class="fa fa-square-caret-left" aria-hidden="true"></i>Back to {{ site["news/index"].title.split("</i>")[-1]|trim|lower }}
+      </a>
+    </p>
+  </article>
+
+
+<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<b>The background of this page 
+  is inspired by the finite element meshes that we use on our codes to discretize physical space.</b></div>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let points = [];
+let numPoints = 70;
+let speed = 0.5;
+let relaxStrength = 0.25 * 0.0025; // "uniformity" slider — equalizes cell/triangle *areas*
+let laplacianStrength = 0.2 * 0.003; // "angle quality" slider — equalizes triangle *angles*
+let lineWidthUI = 8;
+let showNodes = true;
+let fillTris = false;
+let useAccent = false;
+
+// The mesh is generated over a "field" larger than the visible canvas,
+// so points/edges naturally extend past the viewport edges — the canvas
+// clips the overflow for free, and there's never a visible boundary
+// where the mesh "runs out".
+let fieldMinX, fieldMinY, fieldMaxX, fieldMaxY;
+
+// TPMaT logo-derived accent palette (used sparingly, low opacity)
+const accentColors = ['#E8322A', '#2F6FE0', '#4CAF6E', '#F5B921'];
+
+const bgFill = '#ffffff';
+const edgeColor = 'rgba(30,30,30,0.18)';
+const nodeColor = 'rgba(30,30,30,0.25)';
+const fillA = '#ffffff';
+const fillB = 'rgba(30,144,255,0.05)';
+
+function resize() {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width * devicePixelRatio;
+  canvas.height = height * devicePixelRatio;
+  canvas.style.width = width + 'px';
+  canvas.style.height = height + 'px';
+  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+}
+
+function makePointAt(x, y) {
+  const angle = Math.random() * Math.PI * 2;
+  return {
+    x, y,
+    vx: Math.cos(angle),
+    vy: Math.sin(angle),
+    accentIdx: Math.floor(Math.random() * accentColors.length)
+  };
+}
+
+// Jittered-grid ("blue noise"-like) initialization: places one point per
+// grid cell with a bounded random offset, instead of pure uniform random.
+// This keeps the *initial* triangle-size distribution much narrower;
+// the per-frame Lloyd relaxation then maintains that narrowness as
+// points drift.
+function initPoints(n) {
+  // approximate on-screen cell size for the requested density, then
+  // extend the field by ~1.5 cells in every direction
+  const visibleArea = width * height;
+  const cellSize = Math.sqrt(visibleArea / n);
+  const margin = cellSize * 1.5;
+
+  fieldMinX = -margin;
+  fieldMinY = -margin;
+  fieldMaxX = width + margin;
+  fieldMaxY = height + margin;
+
+  const fieldW = fieldMaxX - fieldMinX;
+  const fieldH = fieldMaxY - fieldMinY;
+  const fieldArea = fieldW * fieldH;
+
+  // scale point count up so density over the *visible* area still
+  // matches what the slider says, even though the field is bigger
+  const nField = Math.max(1, Math.round(n * fieldArea / visibleArea));
+
+  const aspect = fieldW / fieldH;
+  const cols = Math.max(1, Math.round(Math.sqrt(nField * aspect)));
+  const rows = Math.max(1, Math.round(nField / cols));
+  const cellW = fieldW / cols;
+  const cellH = fieldH / rows;
+  const jitter = 0.78;
+
+  points = [];
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const cx = fieldMinX + (c + 0.5) * cellW;
+      const cy = fieldMinY + (r + 0.5) * cellH;
+      const x = cx + (Math.random() - 0.5) * jitter * cellW;
+      const y = cy + (Math.random() - 0.5) * jitter * cellH;
+      points.push(makePointAt(x, y));
+    }
+  }
+}
+
+function centroidOf(polygon) {
+  // signed-area centroid of a simple polygon
+  let a = 0, cx = 0, cy = 0;
+  for (let i = 0; i < polygon.length; i++) {
+    const [x0, y0] = polygon[i];
+    const [x1, y1] = polygon[(i + 1) % polygon.length];
+    const cross = x0 * y1 - x1 * y0;
+    a += cross;
+    cx += (x0 + x1) * cross;
+    cy += (y0 + y1) * cross;
+  }
+  a *= 0.5;
+  if (Math.abs(a) < 1e-6) return null;
+  return [cx / (6 * a), cy / (6 * a)];
+}
+
+function step() {
+  const diagonal = Math.hypot(width, height);
+  const REFERENCE_DIAGONAL = 1200;
+  const s = speed * 0.05 * (diagonal / REFERENCE_DIAGONAL);
+  // 1) free drift, bouncing off the *field* bounds (beyond the screen),
+  // not the canvas edges — this is what avoids the empty-border look
+  for (const p of points) {
+    p.x += p.vx * s;
+    p.y += p.vy * s;
+    if (p.x < fieldMinX || p.x > fieldMaxX) p.vx *= -1;
+    if (p.y < fieldMinY || p.y > fieldMaxY) p.vy *= -1;
+    p.x = Math.min(Math.max(p.x, fieldMinX), fieldMaxX);
+    p.y = Math.min(Math.max(p.y, fieldMinY), fieldMaxY);
+  }
+
+  // 2) Mesh-quality relaxation, computed from a single snapshot of
+  // positions so the two effects don't fight each other mid-frame:
+  //   - Lloyd (Voronoi-centroid pull): equalizes triangle *areas*
+  //   - Laplacian (neighbor-average pull): equalizes triangle *angles*,
+  //     directly targeting the sliver/obtuse degenerate cases
+  if (relaxStrength > 0 || laplacianStrength > 0) {
+    const delaunay = d3.Delaunay.from(points, d => d.x, d => d.y);
+    const snapshot = points.map(p => [p.x, p.y]);
+    const voronoi = relaxStrength > 0
+      ? delaunay.voronoi([fieldMinX, fieldMinY, fieldMaxX, fieldMaxY])
+      : null;
+
+    points.forEach((p, i) => {
+      let dx = 0, dy = 0;
+
+      if (voronoi) {
+        const cell = voronoi.cellPolygon(i);
+        const c = cell && centroidOf(cell);
+        if (c) {
+          dx += (c[0] - p.x) * relaxStrength;
+          dy += (c[1] - p.y) * relaxStrength;
+        }
+      }
+
+      if (laplacianStrength > 0) {
+        const neighbors = [...delaunay.neighbors(i)];
+        if (neighbors.length) {
+          let sx = 0, sy = 0;
+          for (const j of neighbors) { sx += snapshot[j][0]; sy += snapshot[j][1]; }
+          const avgX = sx / neighbors.length, avgY = sy / neighbors.length;
+          dx += (avgX - p.x) * laplacianStrength;
+          dy += (avgY - p.y) * laplacianStrength;
+        }
+      }
+
+      p.x += dx;
+      p.y += dy;
+      p.x = Math.min(Math.max(p.x, fieldMinX), fieldMaxX);
+      p.y = Math.min(Math.max(p.y, fieldMinY), fieldMaxY);
+    });
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = bgFill;
+  ctx.fillRect(0, 0, width, height);
+
+  const delaunay = d3.Delaunay.from(points, d => d.x, d => d.y);
+
+  if (fillTris) {
+    // walk triangles manually to fill each "element"
+    const tris = delaunay.triangles;
+    for (let t = 0; t < tris.length / 3; t++) {
+      const i0 = tris[t * 3], i1 = tris[t * 3 + 1], i2 = tris[t * 3 + 2];
+      const p0 = points[i0], p1 = points[i1], p2 = points[i2];
+      ctx.beginPath();
+      ctx.moveTo(p0.x, p0.y);
+      ctx.lineTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.closePath();
+
+      if (useAccent) {
+        ctx.fillStyle = accentColors[p0.accentIdx];
+        ctx.globalAlpha = 0.05;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      } else {
+        ctx.fillStyle = (i0 + i1 + i2) % 2 === 0 ? fillA : fillB;
+        ctx.fill();
+      }
+    }
+  }
+
+  // draw the mesh (edges) using D3's built-in renderer
+  ctx.beginPath();
+  delaunay.render(ctx);
+  ctx.strokeStyle = edgeColor;
+  ctx.lineWidth = lineWidthUI / 10;
+  ctx.stroke();
+
+  if (showNodes) {
+    ctx.beginPath();
+    delaunay.renderPoints(ctx, 2.6);
+    ctx.fillStyle = nodeColor;
+    ctx.fill();
+  }
+}
+
+function loop() {
+  step();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+window.addEventListener('resize', () => {
+  resize();
+});
+
+resize();
+initPoints(numPoints);
+loop();
+</script>
+
+{%- endblock %}
+

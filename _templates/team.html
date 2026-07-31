@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{%- block body %}
+  {{ page.body }}
+
+
+<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<b>The background of this page 
+  is inspired by an evolving network graph representing the formation of new collaborations.</b></div>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+ 
+let width, height;
+let nodes = [];
+let numNodes = 96;
+let speed = 1.2;
+let reachPct = 10;   // % of screen diagonal — connection distance threshold
+let lineOpacity = 22;
+let useAccent = true;
+let lastTime = null;
+ 
+// TPMaT logo palette
+const accentColors = ['rgba(232, 50, 42, 0.5)', 'rgba(47, 111, 224, 0.5)',
+                      'rgba(76, 175, 110, 0.5)', 'rgba(245, 185, 33, 0.5)'];
+const bgFill = '#ffffff';
+const neutralNodeColor = 'rgba(30,30,30,0.55)';
+ 
+function resize() {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width * devicePixelRatio;
+  canvas.height = height * devicePixelRatio;
+  canvas.style.width = width + 'px';
+  canvas.style.height = height + 'px';
+  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+}
+ 
+function makeNodeAt(x, y) {
+  const angle = Math.random() * Math.PI * 2;
+  return {
+    x, y,
+    vx: Math.cos(angle),
+    vy: Math.sin(angle),
+    r: Math.random() * 2 + 3,
+    colorIdx: Math.floor(Math.random() * accentColors.length)
+  };
+}
+ 
+// Jittered-grid ("blue noise"-like) placement: one node per grid cell,
+// nudged by a bounded random offset — spreads nodes evenly across the
+// screen instead of letting pure randomness clump them in some spots
+// and leave gaps in others.
+function initNodes(n) {
+  const aspect = width / height;
+  const cols = Math.max(1, Math.round(Math.sqrt(n * aspect)));
+  const rows = Math.max(1, Math.round(n / cols));
+  const cellW = width / cols;
+  const cellH = height / rows;
+  const jitter = 0.75; // fraction of cell size the node can wander from center
+ 
+  nodes = [];
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (nodes.length >= n) break;
+      const cx = (c + 0.5) * cellW;
+      const cy = (r + 0.5) * cellH;
+      const x = cx + (Math.random() - 0.5) * jitter * cellW;
+      const y = cy + (Math.random() - 0.5) * jitter * cellH;
+      nodes.push(makeNodeAt(x, y));
+    }
+  }
+}
+ 
+// Same fix as the mesh/Voronoi pieces: move in real px/second, scaled to
+// the screen's diagonal, so the drift *feels* the same speed on a laptop
+// panel and a 32" external monitor regardless of resolution or refresh rate.
+function step(dt) {
+  const diagonal = Math.hypot(width, height);
+  const REFERENCE_DIAGONAL = 1200;
+  const pxPerSecond = speed * 6 * (diagonal / REFERENCE_DIAGONAL);
+  const s = pxPerSecond * dt;
+ 
+  for (const n of nodes) {
+    n.x += n.vx * s;
+    n.y += n.vy * s;
+    if (n.x < 0 || n.x > width) n.vx *= -1;
+    if (n.y < 0 || n.y > height) n.vy *= -1;
+    n.x = Math.min(Math.max(n.x, 0), width);
+    n.y = Math.min(Math.max(n.y, 0), height);
+  }
+}
+ 
+function draw() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = bgFill;
+  ctx.fillRect(0, 0, width, height);
+ 
+  const diagonal = Math.hypot(width, height);
+  const reachDist = diagonal * (reachPct / 100);
+ 
+  // edges: connect any two nodes within reach, fading with distance —
+  // this is what makes connections quietly form/dissolve as nodes drift
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j];
+      const dx = a.x - b.x, dy = a.y - b.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist > reachDist) continue;
+ 
+      const strength = 1 - dist / reachDist; // 1 = right on top, 0 = at the edge of reach
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = 'rgba(30,30,30,1)';
+      ctx.globalAlpha = (lineOpacity / 100) * strength;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  }
+  ctx.globalAlpha = 1;
+ 
+  // nodes on top of the edges
+  nodes.forEach(n => {
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+    ctx.fillStyle = useAccent ? accentColors[n.colorIdx] : neutralNodeColor;
+    ctx.fill();
+  });
+}
+ 
+function loop(now) {
+  if (lastTime === null) lastTime = now;
+  const dt = Math.min(0.05, (now - lastTime) / 1000);
+  lastTime = now;
+ 
+  step(dt);
+  draw();
+  requestAnimationFrame(loop);
+}
+ 
+window.addEventListener('resize', () => {
+  resize();
+});
+ 
+resize();
+initNodes(numNodes);
+requestAnimationFrame(loop);
+</script>
+{%- endblock %}
