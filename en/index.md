@@ -1,5 +1,5 @@
 ---
-custom_page_title: Transport Phenomena in Materials Team Lab
+custom_page_title: TPMaT
 banner_image: images/background.jpg
 banner_title: A team exploring <i class="key-word-icon fa fa-water fa-xs" aria-label="hidden" style="color:#2F6FE0"></i>&thinsp;<span style="color:#2F6FE0">transport phenomena</span><br>in <i class="key-word-icon fa fa-atom fa-xs" aria-label="hidden" style="color:#2F6FE0"></i>&thinsp;<span style="color:#2F6FE0">materials science</span> & <i class="key-word-icon fa fa-cogs fa-xs" aria-label="hidden" style="color:#2F6FE0"></i>&thinsp;<span style="color:#2F6FE0">engineering</span>
 banner_subtitle: |

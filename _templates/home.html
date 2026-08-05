@@ -5,8 +5,8 @@
 {%- block content %}
   {%- set lang_root = page.id.split('/')[0] %}
   {%- set news_index_id = lang_root ~ "/news/index" %}
-  {%- set latest_label = "Últimas novidades da equipe" if page.id.startswith('pt/') else "Latest from the team" %}
-  {%- set latest_desc = "As últimas notícias e atualizações dos membros do TPMaT." if page.id.startswith('pt/') else "The latest news and updates from TPMaT members." %}
+  {%- set latest_label = "Últimas notícias da equipe" if page.id.startswith('pt/') else "Latest from the team" %}
+  {%- set latest_desc = "As últimas novidades e atualizações dos membros do TPMaT." if page.id.startswith('pt/') else "The latest news and updates from TPMaT members." %}
   {{ page.body }}
   <h2>{{ latest_label }}</h2>
   <p>
