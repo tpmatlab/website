@@ -67,6 +67,11 @@
       <a href="{{ site[page.id.split('/')[0] ~ '/index'].path|relative_to(page.path) }}">
         <img class="brand" src="{{ brand|relative_to(page.path) }}" alt="{{ config.site_name }}">
       </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+        <i class="fa fa-bars nav-icon-open" aria-hidden="true"></i>
+        <i class="fa fa-xmark nav-icon-close" aria-hidden="true"></i>
+      </label>
       <nav aria-label="Main">
         <ul class="list-inline" role="list">
           {%- for item in nav %}
