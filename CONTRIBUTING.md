@@ -14,7 +14,7 @@ Windows users: when I say "terminal" below, I will mean this "Git Bash" shell.
 ## Getting a copy of the site
 
 First, click on the "fork" button in the
-[compgeolab/website](https://github.com/compgeolab/website)
+[tpmatlab/website](https://github.com/tpmatlab/website)
 repository to grab a copy of the repository to your personal account.
 **You only need to do this once**.
 
@@ -44,12 +44,12 @@ This will keep your terminal busy (that's normal). When you're done, type
 
 If you've already done the above before, your personal copy is probably out of
 sync with the original repository at
-[compgeolab/website](https://github.com/compgeolab/website).
+[tpmatlab/website](https://github.com/tpmatlab/website).
 
 To update your local copy and fork, first you'll need to register the original
 repository. In your local copy, run:
 
-    git remote add upstream git@github.com:compgeolab/website.git
+    git remote add upstream git@github.com:tpmatlab/website.git
 
 This will register the original repository as a source. Then run the following
 to pull in changes from the original:
@@ -88,13 +88,15 @@ Now you can push your local changes to your fork by running:
 
     git push -u origin NAME_OF_YOUR_BRANCH
 
-At this point, your changes are registered in your personal fork on GitHub. Now
-we have to integrate them into the main website code.
+At this point, your changes are registered in your personal fork on GitHub. 
+We recommend that you follow this guide for your commit messages: [How to Write
+a Git Commit Message](https://chris.beams.io/posts/git-commit/).
+Now we have to integrate the changes into the main website code.
 
 ## Making a Pull Request
 
 Go to the GitHub page for the original repository
-[compgeolab/website](https://github.com/compgeolab/website).
+[tpmatlab/website](https://github.com/tpmatlab/website).
 There should be a line there with your branch and a green "Compare & pull
 request" button.
 
@@ -108,7 +110,7 @@ website will be updated automatically.
 
 ## Adding yourself to the website
 
-The [Team page](https://compgeolab.org/team) is built from the information in
+The [Team page](https://tpmatlab.github.io/team/) is built from the information in
 `team/people.yml`.
 To add yourself to the website, create a new entry in that file under the
 appropriate category.
@@ -117,3 +119,9 @@ appropriate category.
 * Feel free to add as much or as little information as you want.
 * The profile picture is captured automatically from your GitHub account.
 * Be aware of white pace! It needs to be consistent.
+
+
+## Credit
+
+This workflow is adapted from the [Computer-Oriented
+Geoscience Lab](https://www.compgeolab.org/).
