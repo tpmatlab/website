@@ -148,8 +148,8 @@ partners** facing challenges in materials science and engineering where
 **computational modeling** and **advanced full-field imaging** can make a
 significant impact.
 
-**If you are 
-interested** [<i class="fa-solid fa-at"></i>**let's get in touch!**](mailto:murilo.moreira@ufscar.br)
+**If you are interested**
+[<i class="fa-solid fa-at"></i>**let's get in touch!**](mailto:murilo.moreira@ufscar.br)
 
 
 [ufscar]: https://www.ufscar.br/
