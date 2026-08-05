@@ -1,13 +1,13 @@
 ---
 title: <i class="fa-solid fa-book title-fa"></i>Lab manual
 toc:
-   - title: Handbook
+   - title: Valores
      pages:
        - pt/manual/coc
        - pt/manual/open-science
        - pt/manual/expectations
        - pt/manual/authorship
-   - title: Guides
+   - title: Guias práticos
      pages:
        - pt/manual/join
        - pt/manual/getting-started
@@ -21,52 +21,59 @@ toc:
 
 <div class="lead">
 
-The lab manual <i class="fa-solid fa-feather-pointed"></i> **documents** how we get
-things done as a team in our lab. It is
-also an <i class="fa-solid fa-house-chimney-window"></i> **open window** into our 
-culture for those interested in <i class="fa-solid fa-people-pulling"></i> **joining us**. 
+Esse manual de laboratório <i class="fa-solid fa-feather-pointed"></i>
+**documenta** como realizamos as atividades em equipe no nosso laboratório. Ele
+também é uma <i class="fa-solid fa-house-chimney-window"></i> **janela aberta**
+para a nossa cultura para <i class="fa-solid fa-people-pulling"></i> **se
+juntar a nós**.
 
 </div>
 
-## About
+## Sobre o manual
 
-The intention of creating this document came **before** the lab was even formed. 
-It is adapted from the great <a target="_blank" href="https://www.compgeolab.org/manual/">
-**Computer-Oriented Geoscience Lab manual**</a>. Even though we share a lot of our
-**principles** and we were inspired by their **design** and **philosophy**, a
-straight copy would not be appropriate (even if we count that their license allows it).
-<i class="fa-regular fa-face-grin-wink"></i> Additionally, our lab is being
-**built from scratch**, so we will slowly **test** and **adapt** the practices
-and procedures that work for our research and context.
+A ideia de criar este documento surgiu **antes** mesmo do laboratório ser
+formado. Ele é adaptado do ótimo
+<a target="_blank" href="https://www.compgeolab.org/manual/">
+**Manual do Computer-Oriented Geoscience Lab**</a>. Apesar de compartilharmos
+muitos de nossos **princípios** e termos de inspiração o seu **design** e
+**filosofia**, uma cópia direta não seria apropriada (mesmo que a licença deles
+permita). <i class="fa-regular fa-face-grin-wink"></i> Além disso, nosso
+laboratório está sendo **construído do zero**, então vamos lentamente **testar**
+e **adaptar** as práticas e procedimentos que funcionam para nossa pesquisa e
+contexto.
 
-Beyond that, we can expect that when the lab **grows**, the **potential for
-conflicts** and **misunderstandings** might increase as well. Thus, the
-ultimate goal for this _"bureaucracy"_: to help to decrease the likelihood of conflicts and 
-misunderstandings, creating a more **pleasant** and **productive** environment 
-for **everyone**.
+Além disso, podemos esperar que, quando o laboratório **crescer**, o **potencial
+para conflitos** e **mal-entendidos** também pode aumentar. Assim, o objetivo
+final desta _"burocracia"_ é: ajudar a diminuir a probabilidade de conflitos e
+mal-entendidos, criando um ambiente mais **agradável** e **produtivo** para
+**todos**.
 
-Following our <a target="_blank" href="https://www.compgeolab.org/manual/">
-**main reference**</a>, our manual is also divided into two sections: 
+Conforme a nossa <a target="_blank" href="https://www.compgeolab.org/manual/">
+**referência principal**</a>, nosso manual também está dividido em duas seções:
 
-* **{{ page.toc[0].title }}:** Which describes the team principles and work ethic.
-* **{{ page.toc[1].title }}:** The practical guides involving the day-to-day work in the lab.
+* **{{ page.toc[0].title }}:** Que descreve os princípios da equipe e a ética
+de trabalho.
+* **{{ page.toc[1].title }}:** Os guias práticos envolvendo o trabalho diário
+no laboratório.
 
 
-To help **develop** and **improve** the manual, the team members are expected to  
-**carefully** read it and provide **feedback**, **suggestions**, and
-**modifications**. To that end, check out the 
-[**Contributing Guide**](https://github.com/compgeolab/website/blob/main/CONTRIBUTING.md)
-for this website.
+Para ajudar a **desenvolver** e **melhorar** o manual, espera-se que os membros
+da equipe leiam-no **cuidadosamente** e forneçam **feedback**, **sugestões** e
+**modificações**. Para isso, consulte o 
+[**Guia de Contribuição**](https://github.com/tpmatlab/website/blob/main/CONTRIBUTING.md)
+deste site.
 
 <div class="callout" style="text-align: justify;">
 
-**Did you enjoy what you see and also want to join the team?**
+**Você gostou do que viu e também quer entrar para a equipe?**
 
-Technical skills can be **learned**, coding can be **mastered** and research
-experience can be **gained**, but **culture** is built together and requires
-**shared values**. If you want to **join** or **collaborate** with use, please
-first ask yourself **why**. Explore our handbook to see if what we expect when
-doing science aligns with your own views and values. After that, you can see **how** 
-to join us [**here**]({{macros.pretty_relative_link(site["pt/manual/join"], page)}}).
+Habilidades técnicas podem ser **aprendidas**, programação pode ser **dominada**
+e a experiência em pesquisa pode ser **adquirida**, mas a **cultura** é
+construída em conjunto e requer **valores compartilhados**. Se você deseja
+**entrar** ou **colaborar** conosco, primeiro pergunte a si mesmo **por quê**.
+Explore nosso manual para ver se o que esperamos ao fazer ciência está alinhado
+com suas próprias expectativas e visão de mundo. Depois disso, você pode ver
+**como** entrar para a equipe
+[**aqui**]({{macros.pretty_relative_link(site["pt/manual/join"], page)}}).
 
 </div>

@@ -18,7 +18,7 @@ Better yet, we will <i class="fa-solid fa-brain"></i> **understand** it,
 
 </div>
 
-**That is our endgoal.**
+**<u>That is our endgoal.</u>**
 
 To achieve it, we aim to combine the world-leading
 **large-scale research facilities** which enable **_in-situ_** and

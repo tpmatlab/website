@@ -111,7 +111,7 @@ website will be updated automatically.
 ## Adding yourself to the website
 
 The [Team page](https://tpmatlab.github.io/team/) is built from the information in
-`team/people.yml`.
+`people.yml`.
 To add yourself to the website, create a new entry in that file under the
 appropriate category.
 

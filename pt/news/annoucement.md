@@ -1,16 +1,18 @@
 ---
-title: <i class="fas fa-bullhorn"></i> Announcing the Transport Phenomena in Materials Team
+title: <i class="fas fa-bullhorn"></i> Anunciando o Laboratório de Fenômenos de Transporte em Materiais (TPMaT)
 date: 2026-07-28
 ---
 
 {%- import "macros.html" as macros %}
 
 
-In **February 2026**, I started a new position as an assistant professor in the 
-[**Department of Materials Engineering**][dema] at the
-[**Federal University of São Carlos (UFSCar)**][ufscar]. It was a **dream** that
-came true. With that comes the **opportunity** (and **responsibility**) of
-starting my own research group: The **Transport Phenomena in Materials Team (TPMaT)**.
+Em **fevereiro de 2026**, eu comecei um novo cargo como professor assistente no 
+[**Departmento de Engenharia de Materiais**][dema] da
+[**Universidade Federal de São Carlos (UFSCar)**][ufscar]. Foi um **sonho** que
+virou realidade. Com isso veio também a **oportunidade** (e a
+**responsabilidade**) de iniciar meu próprio grupo de pesquisa: o
+**Transport Phenomena in Materials Team (TPMaT)**, ou em português,
+**Laboratório de Fenômenos de Transporte em Materiais (TPMaT)**.
 
 <div style="text-align:center; margin-top: -0.125em; margin-bottom: -1.5em;">
 <video class="tpmat-logo-video" id="logo-video" autoplay muted playsinline>
@@ -29,128 +31,137 @@ video.addEventListener("ended", () => {
 });
 </script>
 
-When I was an undergraduate researcher I studied the application of
-**statistical models** in refractory materials. It was the first time that I
-heard about the **_"reproducibility crisis"_** in science. From that moment I
-knew that I wanted to conduct research in a way that was
-<span class="fa-custom-animation"><i class="fa-solid fa-repeat"></i> **reproducible**
-<span class="tooltip"> Research that anyone can repeat. </span></span>,
-<span class="fa-custom-animation"><i class="fa-solid fa-universal-access"></i> **inclusive**
-<span class="tooltip"> Research that anyone can verify and build upon. </span></span>, and 
-<span class="fa-custom-animation"><i class="fa-solid fa-box-open"></i> **open**
-<span class="tooltip"> Research that anyone can access and use. </span></span>. 
+**Em 2015**, quando eu era IC, estudei a aplicação de **modelos estatísticos**
+em materiais refratários. Foi a primeira vez que eu ouvi falar sobre a
+**_"crise de reprodutibilidade"_** da ciência. A partir daquele momento, soube
+que queria conduzir pesquisa de uma forma que fosse <span class="fa-custom-animation"><i class="fa-solid fa-repeat"></i> **reprodutível**
+<span class="tooltip"> Pesquisa que qualquer pessoa pode repetir. </span></span>,
+<span class="fa-custom-animation"><i class="fa-solid fa-universal-access"></i> **inclusiva**
+<span class="tooltip"> Pesquisa que qualquer pessoa pode verificar e desenvolver. </span></span> e 
+<span class="fa-custom-animation"><i class="fa-solid fa-box-open"></i> **aberta**
+<span class="tooltip"> Pesquisa que qualquer pessoa pode acessar e usar. </span></span>. 
 
-I also grew to the realization that such an environment would enable me to 
-**teach** and **mentor** students in a way that would help them become **better
-scientists** and **engineers**.
+Também passei a perceber que esse tipo de mentalidade em um grupo de pesquisa
+ me permitiria **ensinar** e **orientar** estudantes de uma forma que os
+ ajudaria a se tornarem **cientistas** e **engenheiros** melhores.
 
-In addition, during my academic career I learned all the **costs** and
-**challenges** of the **typical experimental research** usually carried out in
-Materials Science and Engineering labs. In parallel, I also uncovered a **deep
-interest** and **joy** in using **computational methods**. That made it crystal
-clear that if I ever was to start a lab group, I would rather focus on 
-computational methods and open science, while also being able to collaborate 
-with more experienced **experimentalists** and **applied scientists**.
+Além disso, durante minha carreira acadêmica, aprendi os **custos** e
+**desafios** da **pesquisa experimental** normalmente realizada em laboratórios
+de Engenharia de Materiais. Em paralelo, também descobri um **profundo
+interesse** e **prazer** em usar **métodos computacionais**. Isso tornou muito
+claro para mim que, se um dia eu fosse iniciar um grupo de laboratório, eu iria
+focar em métodos computacionais e _open science_, permitindo que eu ainda 
+pudesse colaborar com **laboratórios experimentais** mais experientes e
+existentes nos departamentos tradicionais de Engenharia de Materiais.
 
-During my PhD I also had my **first experience** at a **large-scale research
-facility** at the [Institut Laue-Langevin (ILL)][ILL] in Grenoble, where we
-could visualize **transport phenomena** in materials in **real time**
-using **neutron imaging**. This experience was pivotal and made me realize
-that I wanted to continue working at the **intersection** of **computational
-methods** and **advanced experimental research**, particularly focusing on 
-**full-field imaging.**
+Durante meu doutorado, também tive minha **primeira experiência** em uma
+**grande instalação de pesquisa** no [Institut Laue-Langevin (ILL)][ILL] em
+Grenoble, onde pudemos visualizar **fenômenos de transporte** em materiais 
+refratários em **tempo real** usando **tomografia de nêutrons**. Essa
+experiência foi sensacional e me fez perceber que eu queria continuar
+ trabalhando na **interseção** entre **métodos computacionais** e
+ **pesquisa experimental avançada**, com foco particular em métodos
+ **full-field.**
 
-While preparing myself for examination boards and interviews for faculty
-positions, I realized that the subject that I was researching for the past 10
-years, the **drying of refractory castables**, was actually a specific case of
-a broader class of problems in **transport phenomena** in complex and evolving
-microstructures. That was when it clicked for me: **Drying**, **shaping**,
-**additive manufacturing**, and **sintering** are all crucial topics
-in **materials engineering** that are controlled by **transport phenomena**.
+Enquanto me preparava para os concursos e entrevistas para cargos docentes,
+eu percebi que o tema que venho pesquisando nos últimos 10 anos, a **secagem de
+concretos refratários**, era na verdade um caso específico de uma classe mais
+ampla de problemas em **fenômenos de transporte** em microestruturas complexas
+e transientes. Foi quando tudo passou a fazer sentido para mim: **Secagem**,
+**conformação**, **manufatura aditiva** e **sinterização** são todos temas
+cruciais na **engenharia de materiais** que são controlados por **fenômenos de
+transporte**. Esse era o espaço para explorar de maneira autoral, inovadora e
+impactante.
 
 <div class="callout">
 
-**_Why we believe now is the right time:_**\
-_The **computational power** is constantly increasing and that **new
-numerical methods** considering _multiphysics_, _multiscale_ and _multiphase_
-problems are **constantly being developed**. Add to this the fact that the
-**spatial** and **time resolution** of advanced experimental techniques are
-also **constantly improving**, enabling ***in-situ*** and ***in-operando***
-experiments. That is the **perfect storm** for a new research group that
-focuses on solving problems of **transport phenomena in materials**._
+**_Por que acreditamos que agora é o momento certo:_**\
+_O **poder computacional** está constantemente crescendo e **novos métodos
+numéricos** considerando problemas _multifísicos_, _multiscala_ e _multifásicos_
+estão **sendo constantemente desenvolvidos**. Some a isso também o fato de que a
+**resolução espacial** e **temporal** de técnicas experimentais avançadas
+está **melhorando continuamente**, possibilitando experimentos
+***in-situ*** e ***in-operando***. Esse é o **cenário ideal** para um novo
+grupo de pesquisa focado em resolver problemas de **fenômenos de transporte
+em materiais**._
 </div>
 
-Given my own background in ceramics, it could be a natural choice to focus the 
-activities of the lab on ceramics, however, I believe that the **fundamental
-principles** of transport phenomena are **applicable to any class of materials
-beyond ceramics.** So naturally the lab will have multiple projects in ceramics,
-but we are also open to start new research in partnership with other groups on
-**metals** and **polymers**.
+Dado meu histórico em materiais cerâmicos, poderia ser uma escolha natural
+focar as  atividades do novo laboratório em cerâmicas. No entanto, acredito que
+os **princípios fundamentais** dos fenômenos de transporte são **aplicáveis a
+qualquer classe de materiais.** Assim, o laboratório terá múltiplos projetos
+em cerâmicas, mas também estamos abertos a iniciar novas pesquisas em parceria
+com outros grupos em **metais** e **polímeros**.
 
-Regarding the name of our lab group, it is **Transport Phenomena in Materials
-Team (in short, TPMaT)**. It translates our general focus on applying our
-expertise to solve problems involving the transport of mass, heat and momentum
-in materials science and engineering regardless of the class of material. Our
-logo tries to capture the **_essence_** of our work:
+Quanto ao nome do nosso time, ele é em inglês **Transport Phenomena in Materials
+Team (abreviado, TPMaT)**. Ele traduz nosso foco geral em aplicar nossa
+_expertise_ para resolver problemas envolvendo o transporte de massa, calor e
+momento em ciência e engenharia de materiais, independentemente da classe
+de material. Nosso logo tenta capturar a **_essência_** do nosso trabalho:
 
 <div class="tpmat-logo-block">
 
   <img src="../../images/news/Logo_TPMaT.png" alt="TPMaT logo">
 
-<div class="tpmat-text"">
+  <div class="tpmat-text"">
 
-* The background of the logo is a Voronoi tessellation of a 2D domain, which 
-serves as a simple representation of a **microstructure**.
-* The background color is a gradient between **blue** and **red**, which
-represents a **temperature gradient**.
-* At the center of the logo we have a tetrahedron, which represents both a 
-finite element and the materials engineering tetrahedron, which correlates the
-**processing**, **structure**, **properties** and **performance** of a material.
-
+  * O fundo do logo é uma tesselação de Voronoi de um domínio 2D, que 
+  serve como uma representação simples de uma **microestrutura** de materiais
+  policristalinos.
+  * A cor de fundo é um gradiente entre **azul** e **vermelho**, que
+  representa um **gradiente de temperatura**.
+  * No centro do logo temos um tetraedro, que representa tanto um 
+  elemento finito quanto o tetraedro da engenharia de materiais, que correlaciona
+  **processamento**, **estrutura**, **propriedades** e **desempenho** dos
+  materiais.
   </div>
+
 </div>
 
 <div class="callout">
 
-We are now looking for **new members** to help us build the lab. We currently
-have openings for **undergraduate students**, **master and PhD students**,
-and **postdocs**. This is a **unique chance**. Sure there are **challenges**
-and we might not be able to offer as many opportunities as more established
-labs, but the upside is that you will be able to **shape the lab culture** and
-**research philosophy** of a new lab group, a great experience, _especially for
-those who want to pursue an academic career_.
+**Venha fazer parte do nosso time!**
+
+Agora estamos procurando **novos membros** para nos ajudar a construir o grupo
+de pesquisa. Atualmente temos vagas para **estudantes de graduação**,
+**estudantes de mestrado e doutorado** além de **pós-docs**. Esta é uma
+**oportunidade única**. É claro que existem **desafios** e talvez não possamos
+oferecer tantas oportunidades quanto laboratórios mais estabelecidos, mas, por
+outro lado, você poderá **moldar a cultura do laboratório** e a **filosofia de
+pesquisa** de um novo grupo de laboratório, uma experiência excelente,
+_especialmente para quem quer seguir carreira acadêmica_.
 
 </div>
 
-Our [**website**]({{ macros.pretty_relative_link(site["pt/index"], page) }}) will
-serve two purposes: it aims to **illustrate** our **research** and our
-**vision** for the lab, and it also should serve as a **guide** for new members
-and collaborators. You can also peek at our **emerging lab culture** and the
-**research philosophy** that we are trying to build by checking our 
-[**lab manual**]({{ macros.pretty_relative_link(site["pt/manual/index"], page) }})
-and our [**research page**]({{ macros.pretty_relative_link(site["pt/research/index"], page)}}).
+Nosso [**site**]({{ macros.pretty_relative_link(site["pt/index"], page) }}) terá
+dois propósitos: ele busca **ilustrar** nossas **pesquisas** e nossa **visão**
+para o laboratório, e também deve servir como um **guia** para novos membros
+e colaboradores. Você também pode dar uma olhada na **cultura que queremos
+construir** e na **filosofia de pesquisa** que queremos adotar consultando nosso 
+[**manual do laboratório**]({{ macros.pretty_relative_link(site["pt/manual/index"], page) }})
+e nossa [**página de pesquisas**]({{ macros.pretty_relative_link(site["pt/research/index"], page)}}).
 
-I would also like to highlight that our lab group is **deeply inspired** by
-the works of [**Prof. Leonardo Uieda**][leo] at the
-[**Computer Oriented Geoscience Lab**][cogl] at the University of São Paulo, and
-we thank them and **everyone who commits their time and effort to advancing
-open science**. _This lab group would never have been possible without those who
-promote open and reproducible science, and **we have the commitment to contribute
-to this movement as well.**_
+Também gostaria de destacar que nosso grupo de pesquisa é **profundamente
+inspirado** pelo trabalho do [**Prof. Leonardo Uieda**][leo] no
+[**Computer-Oriented Geoscience Lab**][cogl] da Universidade de São Paulo, e
+agradecemos a eles e a **todos que dedicam seu tempo e esforço para promover
+_open science_**. _Este grupo de laboratório nunca teria sido possível sem
+aqueles que fazem ciência aberta e reprodutível, e **temos o compromisso de
+contribuir também com esse movimento.**_
 
-Finally, our ambition is to build an internationally recognized research group
-where computational modeling and advanced experiments are developed side-by-side
-to solve challenging transport problems in materials. 
+Por fim, nossa ambição é construir um grupo de pesquisa reconhecido
+internacionalmente em que modelagem computacional e experimentos avançados
+sejam desenvolvidos lado a lado para resolver problemas desafiadores de
+transporte em materiais. 
 
-So, we look forward to working with both **laboratories** and **industrial
-partners** facing challenges in materials science and engineering where
-**transport phenomena** play a crucial role, and where our expertise in
-**computational modeling** and **advanced full-field imaging** can make a
-significant impact.
+Assim, esperamos trabalhar tanto com **laboratórios** quanto com **parceiros
+industriais** que enfrentam desafios em ciência e engenharia de materiais nos
+quais os **fenômenos de transporte** desempenhem um papel crucial, e nos quais
+nossa _expertise_ em **modelagem computacional** e **métodos _full-field_**
+possa gerar um impacto significativo.
 
-**If you are interested**
-[<i class="fa-solid fa-at"></i>**let's get in touch!**](mailto:murilo.moreira@ufscar.br)
-
+**Se você tiver interesse**
+[<i class="fa-solid fa-at"></i>**vamos conversar!**](mailto:murilo.moreira@ufscar.br)
 
 [ufscar]: https://www.ufscar.br/
 [dema]: https://www.dema.ufscar.br/pt-br/front-page

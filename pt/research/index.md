@@ -1,5 +1,5 @@
 ---
-title: <i class="fa-solid fa-flask title-fa"></i>Our research
+title: <i class="fa-solid fa-flask title-fa"></i>Nossas pesquisas
 template: research.html
 ---
 
@@ -8,31 +8,30 @@ template: research.html
 <div class="lead" style="background-color: color-mix(in srgb, white 80%, transparent); padding: 1rem; border-radius: 0.5rem;">
 <div style="color: #286adb;">
 
-*If something happens, it means it **changes**...*
+*Se algo acontece, isso significa que algo **muda**...*
 
-**And we want to be there to see it!**
+**E nós queremos estar lá para ver o que mudou!**
 
-Better yet, we will <i class="fa-solid fa-brain"></i> **understand** it,
-<i class="fa-solid fa-wand-magic-sparkles"></i> **predict** it, and
-<i class="fa-solid fa-compass-drafting"></i> **control** it!
+Melhor ainda, nós vamos <i class="fa-solid fa-brain"></i> **entender**,
+<i class="fa-solid fa-wand-magic-sparkles"></i> **prever** e
+<i class="fa-solid fa-compass-drafting"></i> **controlar** essas transformações!
 
 </div>
 
-**That is our endgoal.**
+**<u>Esse é o nosso objetivo final.</u>**
 
-To achieve it, we aim to combine the world-leading
-**large-scale research facilities** which enable **_in-situ_** and
-**advanced experiments** to validate and calibrate our **computational models**,
-solving real-world problems. 
-
+Para alcançá-lo, buscamos combinar experimentos em **grandes instalações
+de pesquisa** (e.g., sincrontrons, reatores nucleares, etc.) de nível mundial,
+que possibilitam experimentos **_in-situ_** e **avançados**, para validar e
+calibrar nossos **modelos computacionais**, resolvendo problemas do mundo real. 
 
 </div>
 
 <div style="border: 0px solid #333333; color: black;
 border-radius: 8px; padding: 10px;
 background-color: #9e9a9a; text-align: center; box-shadow: 0 0 0 4px black; outline: 4px dashed #FFFF00;">
-<p class="p1">🚧 <b>This page is under construction.</b> 🚧 </p>
-<p>🚧 New content will be available here soon. <b>Check back soon!</b> 🚧 </p>
+<p class="p1">🚧 <b>Esta página está em construção.</b> 🚧 </p>
+<p>🚧 Novos conteúdos estarão disponíveis aqui em breve. <b>Volte em breve!</b> 🚧 </p>
 </div>
 
 <div style="min-height: 20vh;">

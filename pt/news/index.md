@@ -1,8 +1,10 @@
 ---
-title: <i class="fa-solid fa-newspaper"></i> Team news & announcements
+title: <i class="fa-solid fa-newspaper"></i> Notícias do time
 template: news-index.html
 ---
 
-Here you can find the latest news and announcements such as new projects, 
-achievements of our team members and collaborators, papers, and upcoming events.
-We also post job openings to join our team, so make sure to always check this page for the latest updates <i class="fa-regular fa-face-smile-wink" style="color: var(--color-primary)"></i>.
+Aqui você encontra as nossas últimas notícias e anúncios, como novos projetos, 
+conquistas dos membros da nossa equipe e colaboradores, artigos e eventos
+futuros. Também publicamos vagas para se juntar à nossa equipe, então não deixe
+de visitar esta página para nos acompanhar de perto
+<i class="fa-regular fa-face-smile-wink" style="color: var(--color-primary)"></i>.

@@ -1,5 +1,5 @@
 ---
-title: <i class="fa fa-users title-fa" aria-label="hidden"></i>Join the team
+title: <i class="fa fa-users title-fa" aria-label="hidden"></i>Junte-se ao time
 template: team.html
 ---
 
@@ -7,11 +7,11 @@ template: team.html
 
 <div class="lead">
 
-We are building a talented team of researchers and students to work on transport 
-phenomena in materials science and engineering, and to structure the lab group
-itself. If you are interested in joining our team check our
-{{ macros.page_link("pt/manual/index", page, site) }} for more information, or
-[<i class="fa-solid fa-at"></i>reach out to us directly](mailto:murilo.moreira@ufscar.br).
+Estamos formando uma equipe talentosa de pesquisadores e estudantes para
+trabalhar com fenômenos de transporte em ciência e engenharia de materiais, e
+para montar o próprio laboratório. Se você tem interesse em se juntar à nossa
+equipe, consulte nosso {{ macros.page_link("pt/manual/index", page, site) }}
+para mais informações, ou [<i class="fa-solid fa-at"></i>entre em contato conosco diretamente](mailto:murilo.moreira@ufscar.br).
 
 </div>
 
@@ -28,11 +28,11 @@ itself. If you are interested in joining our team check our
       <h3 id="{{ id }}">
         {{ person.name }}
         {%- if person.pronouns is defined %}
-          <span class="font-normal">({{ person.pronouns }})</span>
+          <span class="font-normal">({{"ele/dele" if person.pronouns == "he/him" else "ela/dela" if person.pronouns == "she/her" else person.pronouns }})</span>
         {%- endif %}
       </h3>
       <ul role="list">
-        <li><span class="text-bold">{{ person.role }}</span></li>
+        <li><span class="text-bold">{{"Professor" if person.role == "Professor" and person.pronouns == "he/him" else "Professora" if person.role == "Professor" and person.pronouns == "she/her" else person.role }}</span></li>
         <li>{{ person.affiliation }}</li>
         {%- if person.email is defined %}
           <li>Email: <a href="mailto:{{ person.email }}" target="_blank">{{ person.email }}</a></li>
@@ -44,7 +44,7 @@ itself. If you are interested in joining our team check our
           <li>Website: <a href="{{ person.website }}" target="_blank">{{ person.website[8:] }}</a></li>
         {%- endif %}
         {%- if person.project is defined %}
-          <li>Project: <span class="text-muted">{{ person.project }}</span></li>
+          <li>Projeto: <span class="text-muted">{{ person.project }}</span></li>
         {%- endif %}
       </ul>
       <ul class="list-inline font-large" role="list">
@@ -77,20 +77,21 @@ itself. If you are interested in joining our team check our
 
 
 
-## Team members
+## Membros do time
 
-Meet the students and researchers who make TPMaT possible:
+Conheça os estudantes e pesquisadores que fazem o TPMaT funcionar:
 
 {{ profiles(page.people.current) }}
 
-## Collaborators
+## Colaboradores
 
-Meet some of the outstanding colleagues that we are fortunate to collaborate with around the world:
+Conheça alguns dos excelentes colegas com quem temos a sorte de colaborar ao
+redor do mundo:
 
 {{ profiles(page.people.collaborators) }}
 
 <!-- ## Alumni
 
-These are some of the students and postdocs that have worked with us: -->
+Alguns dos estudantes e pós-doutorandos que trabalharam conosco: -->
 
 <!-- {{ profiles(page.people.alumni) }} -->
