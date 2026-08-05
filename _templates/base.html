@@ -1,7 +1,13 @@
 {%- import "macros.html" as macros -%}
+{%- set pt = page.id.startswith('pt/') -%}
+{%- set nav = config.navigation_pt if pt else config.navigation_en -%}
+{%- set brand = config.brand_pt if pt else config.brand_en -%}
+{%- set department_url = config.department_url_pt if pt else config.department_url_en -%}
+{%- set university_url = config.university_url_pt if pt else config.university_url_en -%}
+{%- set country_url = config.country_url_pt if pt else config.country_url_en -%}
 
 <!DOCTYPE html>
-<html lang="{{ config.language }}">
+<html lang="{{ 'pt-BR' if pt else 'en' }}">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,16 +64,31 @@
 
   <header>
     <div class="spread content-wide">
-      <a href="{{ site['index'].path|relative_to(page.path) }}">
-        <img class="brand" src="{{ config.brand|relative_to(page.path) }}" alt="{{ config.site_name }}">
+      <a href="{{ site[page.id.split('/')[0] ~ '/index'].path|relative_to(page.path) }}">
+        <img class="brand" src="{{ brand|relative_to(page.path) }}" alt="{{ config.site_name }}">
       </a>
       <nav aria-label="Main">
         <ul class="list-inline" role="list">
-          {%- for item in config.navigation %}
+          {%- for item in nav %}
             <li>
               {{ macros.nav_link(item, page, site) }}
             </li>
           {%- endfor %}
+          {%- if page.path.startswith('en/') %}
+            {%- set alt_path = page.path|replace('en/', 'pt/', 1) %}
+            {%- set current_lang = 'EN' %}
+            {%- set alt_lang = 'PT' %}
+          {%- elif page.path.startswith('pt/') %}
+            {%- set alt_path = page.path|replace('pt/', 'en/', 1) %}
+            {%- set current_lang = 'PT' %}
+            {%- set alt_lang = 'EN' %}
+          {%- endif %}
+          {%- if alt_path is defined %}
+          <li class="lang-selector">
+            <span class="lang-current">{{ current_lang }}</span>
+            <a class="lang-alt" href="{{ alt_path|relative_to(page.path) }}" aria-label="Switch language">{{ alt_lang }}</a>
+          </li>
+          {%- endif %}
         </ul>
       </nav>
     </div>
@@ -110,7 +131,7 @@
   <footer>
     <div class="content-wide flow flow-large">
       <ul class="list-inline" role="list">
-        <li><strong>Follow the lab:</strong></li>
+        <li><strong>{{ "Siga o nosso time:" if pt else "Follow the lab:" }}</strong></li>
         <li>
           <a href="https://github.com/{{ config.github }}" target="_blank"><i class="fab fa-github" aria-hidden="true">&thinsp;</i>GitHub</a>
         </li>
@@ -129,23 +150,23 @@
       </ul>
       <div class="font-small">
         <p class="text-bold">
-          <a href="{{ config.department_url }}" target="_blank">{{ config.location.department }}</a>  
+          <a href="{{ department_url }}" target="_blank">{{ config.location.department }}</a>  
           —
-          <a href="{{ config.university_url }}" target="_blank">{{ config.location.university }}</a>
+          <a href="{{ university_url }}" target="_blank">{{ config.location.university }}</a>
           —
-          <a href="{{ config.country_url }}" target="_blank">{{ config.location.country }}</a>
+          <a href="{{ country_url }}" target="_blank">{{ config.location.country }}</a>
         </p>
         <p>
-          Last updated on {{ build.today.strftime('%d %B %Y') }}.
-          Built with <a href="https://nene.leouieda.com">Nēnē</a> {{ build.nene_version }}
-          from source code at
+          {{ "Última atualização em" if pt else "Last updated on" }} {{ build.today.strftime('%d %B %Y') }}.
+          {{ "Construído com" if pt else "Built with" }} <a href="https://nene.leouieda.com">Nēnē</a> {{ build.nene_version }}
+          {{ "a partir do código-fonte disponível em" if pt else "from source code at" }}
           <a href="https://github.com/{{ config.repository }}">{{ config.repository}}</a>
           (<a href="https://github.com/{{ config.repository }}/commit/{{ build.commit }}">{{ build.commit }}</a>).
         </p>
-        <p><i><b>Design and philosophy inspired by <a href="https://www.leouieda.com">Leonardo Uieda’s</a> <a href="https://www.compgeolab.org/">Computational Geophysics Lab</a></i></b>.</p>
+        <p><i><b>{{ "Design e filosofia inspirados no" if pt else "Design and philosophy inspired by" }} {{ '<a href="https://www.compgeolab.org/">Computational Oriented Geoscience Lab</a> do <a href="https://www.leouieda.com">Prof. Leonardo Uieda</a>' if pt else '<a href="https://www.leouieda.com">Prof. Leonardo Uieda\'s</a> <a href="https://www.compgeolab.org/">Computational Oriented Geoscience Lab</a>' }}</i></b>.</p>
         <p>
           Copyright &copy; {{ build.today.year }} {{ config.author }}.
-          Except where otherwise noted, all content is licensed
+          {{ "Exceto onde indicado, todo o conteúdo está licenciado sob" if pt else "Except where otherwise noted, all content is licensed" }}
           <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>.
         </p>
       </div>

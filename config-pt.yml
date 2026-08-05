@@ -1,0 +1,46 @@
+site_name: "Transport Phenomena in Materials Team"
+site_description: "Transport Phenomena in Materials Team website (TBT)"
+brand: "images/tpmat-banner-light.svg"
+favicon: "images/favicon.png"
+thumbnail: "images/thumbnail.jpg"
+url: "http://tpmatlab.github.io/"
+domain: tpmatlab.github.io
+repository: tpmatlab/website
+repository_branch: main
+author: Murilo Henrique Moreira
+mastodon: MuriloHMoreira
+mastodon_server: TBT
+github: tpmatlab
+linkedin: murilo-henrique-moreira
+researchgate: TBT
+zenodo: tpmat
+department_url: https://www.dema.ufscar.br/en/home?set_language=en
+university_url: https://www.ufscar.br/foreign-visitor/about-ufscar
+country_url: https://www.gov.br/planalto/en
+location:
+  department: Departamento de Engenharia de Materiais
+  center: Centro de Ciências Exatas e de Tecnologia
+  grad_school: Programa de Pós-Graduação em Ciência e Engenharia de Materiais
+  university: Universidade Federal de São Carlos
+  country: Brasil
+language: en
+keywords: 'materials engineering, materials science, transport phenomena, tomography, FEM, open-source'
+navigation:
+  - name: <i class="fa fa-home"></i> Home
+    id: en/index
+  - name: <i class="fa fa-newspaper"></i> News
+    id: en/news/index
+  - name: <i class="fa fa-users"></i> Team
+    id: en/team/index
+  - name: <i class="fa fa-flask"></i> Research
+    id: en/research/index
+  - name: <i class="fa fa-book"></i> Manual
+    id: en/manual/index
+ignore:
+  - README.md
+  - LICENSE.md
+  - CONTRIBUTING.md
+  - environment.yml
+  - Makefile
+  - css/academicons/README.md
+  - pt/

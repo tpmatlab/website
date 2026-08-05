@@ -14,7 +14,7 @@ starting my own research group: The **Transport Phenomena in Materials Team (TPM
 
 <div style="text-align:center; margin-top: -0.125em; margin-bottom: -1.5em;">
 <video class="tpmat-logo-video" id="logo-video" autoplay muted playsinline>
-<source src="../videos/logo-tpmat.mp4" type="video/mp4">
+<source src="../../videos/logo-tpmat.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -95,7 +95,7 @@ logo tries to capture the **_essence_** of our work:
 
 <div class="tpmat-logo-block">
 
-  <img src="../images/news/Logo_TPMaT.png" alt="TPMaT logo">
+  <img src="../../images/news/Logo_TPMaT.png" alt="TPMaT logo">
 
 <div class="tpmat-text"">
 
@@ -122,13 +122,13 @@ those who want to pursue an academic career_.
 
 </div>
 
-Our [**website**]({{ macros.pretty_relative_link(site["index"], page) }}) will
+Our [**website**]({{ macros.pretty_relative_link(site["en/index"], page) }}) will
 serve two purposes: it aims to **illustrate** our **research** and our
 **vision** for the lab, and it also should serve as a **guide** for new members
 and collaborators. You can also peek at our **emerging lab culture** and the
 **research philosophy** that we are trying to build by checking our 
-[**lab manual**]({{ macros.pretty_relative_link(site["manual/index"], page) }})
-and our [**research page**]({{ macros.pretty_relative_link(site["research/index"], page)}}).
+[**lab manual**]({{ macros.pretty_relative_link(site["en/manual/index"], page) }})
+and our [**research page**]({{ macros.pretty_relative_link(site["en/research/index"], page)}}).
 
 I would also like to highlight that our lab group is **deeply inspired** by
 the works of [**Prof. Leonardo Uieda**][leo] at the

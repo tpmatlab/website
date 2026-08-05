@@ -7,11 +7,11 @@ banner_subtitle: |
   
 banner_links:
   - name: <i class="fa fa-users" aria-label="hidden"></i> Join the team
-    id: team/index
+    id: en/team/index
   - name: <i class="fa fa-flask" aria-label="hidden"></i> Our research
-    id: research/index
+    id: en/research/index
   - name: <i class="fa fa-book" aria-label="hidden"></i> Lab manual
-    id: manual/index
+    id: en/manual/index
   - name: <i class="fab fa-github" aria-label="hidden"></i> GitHub
     id: https://github.com/tpmatlab
   - name: <i class="ai ai-zenodo-square" aria-label="hidden"></i> Zenodo
@@ -24,7 +24,7 @@ template: home.html
 ## About us
 
 The **TPMaT** is a
-[research group]({{ macros.pretty_relative_link(site["team/index"], page) }})
+[research group]({{ macros.pretty_relative_link(site["en/team/index"], page) }})
 based at the [{{ config.location.department }}][dema] on the 
 [{{ config.location.university }}][ufscar] in the São Carlos campus, Brazil. 
 **Drying**, **shaping**, **additive manufacturing**, and **sintering** are all crucial topics
@@ -45,7 +45,7 @@ science**
 <div class="callout">
 
 **Want to work with us?**
-<!-- Have a look at the {{ macros.page_link("manual/index", page, site) }}, which
+<!-- Have a look at the {{ macros.page_link("en/manual/index", page, site) }}, which
 outlines our core principles as scientists and how we operate as a team. -->
 
 [<i class="fa-solid fa-at">&thinsp;</i><span>Contact us</span>](mailto:murilo.moreira@ufscar.br) if you are interested in joining our team as a student, postdoc, or

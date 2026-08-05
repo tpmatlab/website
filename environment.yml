@@ -1,4 +1,4 @@
-name: compgeolab.org
+name: tpmatlab.github.io
 channels:
     - conda-forge
     - defaults

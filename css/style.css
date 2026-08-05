@@ -647,3 +647,26 @@ blockquote > * + *, figure > * + *, .callout > * + * {
     width: 90%;
   }
 }
+
+/* Language selector */
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-left: 1px solid var(--color-border, #ccc);
+  padding-left: 0.75rem;
+  margin-left: 0.25rem;
+}
+.lang-current {
+  color: var(--color-accent, #2F6FE0);
+}
+.lang-alt {
+  opacity: 0.6;
+  font-size: 0.85rem!important;
+  text-decoration: none;
+}
+.lang-alt:hover {
+  opacity: 1;
+}

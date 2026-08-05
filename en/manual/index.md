@@ -3,18 +3,18 @@ title: <i class="fa-solid fa-book title-fa"></i>Lab manual
 toc:
    - title: Handbook
      pages:
-       - manual/coc
-       - manual/open-science
-       - manual/expectations
-       - manual/authorship
+       - en/manual/coc
+       - en/manual/open-science
+       - en/manual/expectations
+       - en/manual/authorship
    - title: Guides
      pages:
-       - manual/join
-       - manual/getting-started
-       - manual/communication
-       - manual/health
-       - manual/computing
-       - manual/resources
+       - en/manual/join
+       - en/manual/getting-started
+       - en/manual/communication
+       - en/manual/health
+       - en/manual/computing
+       - en/manual/resources
 ---
 
 {% import "macros.html" as macros %}
@@ -67,6 +67,6 @@ experience can be **gained**, but **culture** is built together and requires
 **shared values**. If you want to **join** or **collaborate** with use, please
 first ask yourself **why**. Explore our handbook to see if what we expect when
 doing science aligns with your own views and values. After that, you can see **how** 
-to join us [**here**]({{macros.pretty_relative_link(site["manual/join"], page)}}).
+to join us [**here**]({{macros.pretty_relative_link(site["en/manual/join"], page)}}).
 
 </div>

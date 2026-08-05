@@ -10,7 +10,7 @@ template: team.html
 We are building a talented team of researchers and students to work on transport 
 phenomena in materials science and engineering, and to structure the lab group
 itself. If you are interested in joining our team check our
-{{ macros.page_link("manual/index", page, site) }} for more information, or
+{{ macros.page_link("en/manual/index", page, site) }} for more information, or
 [<i class="fa-solid fa-at"></i>reach out to us directly](mailto:murilo.moreira@ufscar.br).
 
 </div>

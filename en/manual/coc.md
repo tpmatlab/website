@@ -41,7 +41,7 @@ rolling).
 
 If you are being harassed, notice that someone else is being harassed, or have
 any other concerns, please contact
-[Murilo Henrique Moreira]({{ site["team/index"].path|relative_to(page.path) }}#MuriloHMoreira)
+[Murilo Henrique Moreira]({{ site["en/team/index"].path|relative_to(page.path) }}#MuriloHMoreira)
 immediately.
 
 For official concerns or if Murilo is the cause of your concern, please

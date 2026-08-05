@@ -1,22 +1,23 @@
 {% extends "base.html" %}
 
 {%- block content %}
-  <article class="flow">
+  {%- set lang_root = page.id.split('/')[0] %}
+  {%- set news_index_id = lang_root ~ "/news/index" %}
+    <article class="flow">
     <h1>{{ page.title }}</h1>
     <p class="text-muted">
       Published on {{ page.date|replace("-", "/") }} by {{ page.author }}.
     </p>
     {{ page.body }}
     <p class="text-right">
-      <a href="{{ site["news/index"].path|relative_to(page.path) }}">
-        <i class="fa fa-square-caret-left" aria-hidden="true"></i>Back to {{ site["news/index"].title.split("</i>")[-1]|trim|lower }}
+      <a href="{{ site[news_index_id].path|relative_to(page.path) }}">
+        <i class="fa fa-square-caret-left" aria-hidden="true"></i>{{ "Voltar para" if page.id.startswith('pt/') else "Back to" }} {{ site[news_index_id].title.split("</i>")[-1]|trim|lower }}
       </a>
     </p>
   </article>
 
+<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<b>{{ "O fundo desta página é inspirado nas malhas de elementos finitos que utilizamos em nossos códigos para discretizar o espaço físico." if page.id.startswith('pt/') else "The background of this page is inspired by the finite element meshes that we use on our codes to discretize physical space." }}</b></div>
 
-<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<b>The background of this page 
-  is inspired by the finite element meshes that we use on our codes to discretize physical space.</b></div>
 <script>
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');

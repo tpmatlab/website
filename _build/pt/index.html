@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transport Phenomena in Materials Team Lab</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <link rel="shortcut icon" href="../images/favicon.png"/>
+
+  <!-- OpenGraph social media card -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Transport Phenomena in Materials Team Lab" />
+  <meta property="og:description" content="We combine computational methods and advanced experiments to study how the microstructure of materials evolves across space and time during manufacturing and service." />
+  <meta property="og:image" content="http://tpmatlab.github.io//images/thumbnail.jpg" />
+  <meta property="og:url" content="http://tpmatlab.github.io//pt/index.html" />
+
+  <!-- Atkinson Hyperlegible fonts -->
+  <link rel="stylesheet" href="../pkg/atkinson-hyperlegible-next/font.css" />
+  <link rel="stylesheet" href="../pkg/atkinson-hyperlegible-mono/font.css" />
+
+  <!-- FontAwsome icons -->
+  <link rel="stylesheet" href="../pkg/fontawesome/css/all.css">
+
+  <!-- Academicons icons -->
+  <link rel="stylesheet" href="../pkg/academicons-1.9.6/css/academicons.min.css">
+
+  <!-- Andy Bell's CSS reset -->
+  <link rel="stylesheet" href="../css/reset.css" />
+
+  <!-- Main CSS stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Plausible analytics for anonymous usage statistics -->
+  <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
+
+</head>
+
+<body>
+<canvas id="canvas"></canvas>
+
+  <header>
+    <div class="spread content-wide">
+      <a href="index.html">
+        <img class="brand" src="../images/tpmat-banner-light-ptbr.svg" alt="TPMaT - Transport Phenomena in Materials Team">
+      </a>
+      <nav aria-label="Main">
+        <ul class="list-inline" role="list">
+            <li>
+              <a class="active" aria-current="page" href="."><i class="fa fa-home"></i> Início</a>
+            </li>
+            <li>
+              <a class=""  href="news/"><i class="fa fa-newspaper"></i> Notícias</a>
+            </li>
+            <li>
+              <a class=""  href="team/"><i class="fa fa-users"></i> Equipe</a>
+            </li>
+            <li>
+              <a class=""  href="research/"><i class="fa fa-flask"></i> Pesquisa</a>
+            </li>
+            <li>
+              <a class=""  href="manual/"><i class="fa fa-book"></i> Manual</a>
+            </li>
+          <li class="lang-selector">
+            <span class="lang-current">PT</span>
+            <a class="lang-alt" href="../en/index.html" aria-label="Switch language">EN</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flow">
+      <div class="banner" >
+        <div class="flow content">
+          <h2 style="border: none;">A team exploring <i class="key-word-icon fa fa-water fa-xs" aria-label="hidden" style="color:#2F6FE0"></i>&thinsp;<span style="color:#2F6FE0">transport phenomena</span><br>in <i class="key-word-icon fa fa-atom fa-xs" aria-label="hidden" style="color:#2F6FE0"></i>&thinsp;<span style="color:#2F6FE0">materials science</span> & <i class="key-word-icon fa fa-cogs fa-xs" aria-label="hidden" style="color:#2F6FE0"></i>&thinsp;<span style="color:#2F6FE0">engineering</span></h2>
+          <p style="margin-block-start: 10pt;"><b>We combine <i class="key-word-icon fa fa-laptop-code" aria-label="hidden" style="color:#2F6FE0"></i> <span style="color:#2F6FE0">computational methods</span> and <i class="key-word-icon fa fa-circle-radiation" aria-label="hidden" style="color:#2F6FE0;"></i> <span style="color:#2F6FE0;">advanced experiments</span> to study how the microstructure of materials evolves across space and time during manufacturing and service.
+</b></p>
+          <ul class="list-inline" role="list">
+              <li>
+                  <a class=""  href="team/"><i class="fa fa-users" aria-label="hidden"></i> Join the team</a>
+              </li>
+              <li>
+                  <a class=""  href="research/"><i class="fa fa-flask" aria-label="hidden"></i> Our research</a>
+              </li>
+              <li>
+                  <a class=""  href="manual/"><i class="fa fa-book" aria-label="hidden"></i> Lab manual</a>
+              </li>
+              <li>
+                  <a href="https://github.com/tpmatlab" target="_blank"><i class="fab fa-github" aria-label="hidden"></i> GitHub</a>
+              </li>
+              <li>
+                  <a href="https://zenodo.org/communities/tpmat/records?q=&l=list&p=1&s=10&sort=newest" target="_blank"><i class="ai ai-zenodo-square" aria-label="hidden"></i> Zenodo</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    <div class="content flow extra-space">
+  <h2 id="about-us">About us</h2>
+<p>The <strong>TPMaT</strong> is a
+<a href="team/">research group</a>
+based at the <a href="https://www.dema.ufscar.br/pt-br/front-page">Departamento de Engenharia de Materiais</a> on the
+<a href="https://www.ufscar.br/">Universidade Federal de São Carlos</a> in the São Carlos campus, Brazil.
+<strong>Drying</strong>, <strong>shaping</strong>, <strong>additive manufacturing</strong>, and <strong>sintering</strong> are all crucial topics
+in <strong>materials engineering</strong> that are controlled by <strong>transport phenomena</strong>. Our team focuses on
+applying and developing computational methods and advanced experiments to <strong>solve
+problems</strong> in these areas. To that end, we leverage multiple <strong>open-source</strong>
+software, <em>from building numerical models</em>, <em>acquiring experimental data</em>, to
+<em>post-processing and visualization</em>. We also take this open mindset to all
+of our research and teaching activities, promoting
+<span class="fa-custom-animation"><i class="fa-solid fa-repeat"></i> <strong>reproducible</strong>
+<span class="tooltip"> Research that anyone can repeat. </span></span>,
+<span class="fa-custom-animation"><i class="fa-solid fa-universal-access"></i> <strong>inclusive</strong>
+<span class="tooltip"> Research that anyone can verify and build upon. </span></span>, and
+<span class="fa-custom-animation"><i class="fa-solid fa-box-open"></i> <strong>open
+science</strong>
+<span class="tooltip"> Research that anyone can access and use. </span></span>.</p>
+<div class="callout">
+<p><strong>Want to work with us?</strong></p>
+<!-- Have a look at the <a href="../en/manual/index.html"><i class="fa-solid fa-book title-fa"></i>Lab manual</a>, which
+outlines our core principles as scientists and how we operate as a team. -->
+<p><a href="mailto:murilo.moreira@ufscar.br"><i class="fa-solid fa-at"> </i><span>Contact us</span></a> if you are interested in joining our team as a student, postdoc, or
+collaborator!<br>We have openings for undergraduate and graduate students and postdocs to help us build the lab.</p>
+</div>
+<p>Code and datasets from our publicly available research are hosted on
+<a href="https://github.com/tpmatlab"><i class="fab fa-github" aria-hidden="true"></i><span>GitHub
+organization</span></a> and on our <a href="https://zenodo.org/communities/tpmat/records?q=&amp;l=list&amp;p=1&amp;s=10&amp;sort=newest"><i class="ai ai-zenodo-square"
+aria-hidden="true"> </i><span>Zenodo community</span></a>.
+<span style="color:#2F6FE0"><em><strong>Naturally, industrial collaborations are conducted in accordance with our partners’
+confidentiality and intellectual property agreements</strong></em> <i class="fa-solid fa-handshake"></i>.</span></p>
+
+  <h2>Últimas novidades da equipe</h2>
+  <p>
+    As últimas notícias e atualizações dos membros do TPMaT.
+  </p>
+  <ul class="flow fa-ul">
+      <li>
+        <i class="fa-li far fa-square-caret-right fa-fw" aria-hidden="true"></i>
+        <a class="text-bold" href="news/annoucement.html"><i class="fas fa-bullhorn"></i> Announcing the Transport Phenomena in Materials Team</a>
+        <br>
+        <span class="font-small text-muted">In February 2026, I started a new position as an assistant professor in the Department of Materials Engineering at the Federal University of São Carlos (UFSCar). It was a dream that came true....</span>
+      </li>
+  </ul>
+  <!-- <p>
+    More news items can be found in: <b><a href="../en/news/index.html">
+    <i class="fa fa-newspaper fa" aria-hidden="true">&thinsp;</i><i class="fa-solid fa-newspaper"></i> Team news & announcements</a></b>.
+  </p> -->
+
+
+<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&thinsp;<b>O fundo desta página é inspirado na microestrutura dos materiais, usando um diagrama de Voronoi para representar a evolução dos contornos de grão.</b></div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let points = [];
+let numPoints = 164;
+let speed = 4;      // 1-20 slider -> scaled down
+let lineWidthUI = 8;
+let useAccent = false;
+
+// TPMaT logo-derived accent palette (used sparingly, low opacity)
+const accentColors = ['#E8322A', '#2F6FE0', '#4CAF6E', '#F5B921'];
+
+// Neutral palette in the CompGeoLab spirit
+const bgFill = '#ffffff';
+// const cellFillA = '#ffffff';
+// const cellFillB = '#ffffff';
+const cellFillA = '#ffffff';
+const cellFillB = 'rgba(30,144,255,0.05)';
+const strokeColor = 'rgba(30,30,30,0.08)';
+
+function resize() {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width * devicePixelRatio;
+  canvas.height = height * devicePixelRatio;
+  canvas.style.width = width + 'px';
+  canvas.style.height = height + 'px';
+  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+}
+
+function makePoint() {
+  const angle = Math.random() * Math.PI * 2;
+  return {
+    x: Math.random() * width,
+    y: Math.random() * height,
+    vx: Math.cos(angle),
+    vy: Math.sin(angle),
+    accentIdx: Math.floor(Math.random() * accentColors.length)
+  };
+}
+
+function initPoints(n) {
+  points = Array.from({ length: n }, makePoint);
+}
+
+function step() {
+  // const s = speed * 0.04; // keep it slow/ambient, like "breathing"
+  const diagonal = Math.hypot(width, height);
+  const REFERENCE_DIAGONAL = 1200;
+  const s = speed * 0.012 * (diagonal / REFERENCE_DIAGONAL);
+  for (const p of points) {
+    p.x += p.vx * s;
+    p.y += p.vy * s;
+    if (p.x < 0 || p.x > width) p.vx *= -1;
+    if (p.y < 0 || p.y > height) p.vy *= -1;
+    p.x = Math.min(Math.max(p.x, 0), width);
+    p.y = Math.min(Math.max(p.y, 0), height);
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = bgFill;
+  ctx.fillRect(0, 0, width, height);
+
+  const delaunay = d3.Delaunay.from(points, d => d.x, d => d.y);
+  const voronoi = delaunay.voronoi([0, 0, width, height]);
+
+  points.forEach((p, i) => {
+    const cell = voronoi.cellPolygon(i);
+    if (!cell) return;
+
+    ctx.beginPath();
+    ctx.moveTo(cell[0][0], cell[0][1]);
+    for (let j = 1; j < cell.length; j++) {
+      ctx.lineTo(cell[j][0], cell[j][1]);
+    }
+    ctx.closePath();
+
+    if (useAccent) {
+      ctx.fillStyle = accentColors[p.accentIdx];
+      ctx.globalAlpha = 0.05;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    } else {
+      ctx.fillStyle = i % 2 === 0 ? cellFillA : cellFillB;
+      ctx.fill();
+    }
+
+    ctx.strokeStyle = strokeColor;
+    ctx.lineWidth = lineWidthUI / 10;
+    ctx.stroke();
+  });
+}
+
+function loop() {
+  step();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+window.addEventListener('resize', () => {
+  resize();
+  initPoints(numPoints);
+});
+
+resize();
+initPoints(numPoints);
+loop();
+</script>
+    </div>
+  </main>
+
+  <footer>
+    <div class="content-wide flow flow-large">
+      <ul class="list-inline" role="list">
+        <li><strong>Siga o nosso time:</strong></li>
+        <li>
+          <a href="https://github.com/tpmatlab" target="_blank"><i class="fab fa-github" aria-hidden="true">&thinsp;</i>GitHub</a>
+        </li>
+          <!-- <li>
+            <a href="https://TBT/@MuriloHMoreira" target="_blank"><i class="fab fa-mastodon" aria-hidden="true">&thinsp;</i>Mastodon</a>
+          </li> -->
+        <!-- <li>
+          <a href="https://www.linkedin.com/in/murilo-henrique-moreira" target="_blank"><i class="fab fa-linkedin" aria-hidden="true">&thinsp;</i>LinkedIn</a>
+        </li> -->
+        <li>
+          <a href="https://zenodo.org/communities/tpmat" target="_blank"><i class="ai ai-zenodo-square">&thinsp;</i>Zenodo</a>
+        </li>
+        <li>
+          <a href="https://www.researchgate.net/lab/TBT" target="_blank"><i class="fab fa-researchgate" aria-hidden="true">&thinsp;</i>ResearchGate</a>
+        </li>
+      </ul>
+      <div class="font-small">
+        <p class="text-bold">
+          <a href="" target="_blank">Departamento de Engenharia de Materiais</a>  
+          —
+          <a href="" target="_blank">Universidade Federal de São Carlos</a>
+          —
+          <a href="" target="_blank">Brasil</a>
+        </p>
+        <p>
+          Última atualização em 05 August 2026.
+          Construído com <a href="https://nene.leouieda.com">Nēnē</a> v0.10.0
+          a partir do código-fonte disponível em
+          <a href="https://github.com/tpmatlab/website">tpmatlab/website</a>
+          (<a href="https://github.com/tpmatlab/website/commit/8d7dc2a">8d7dc2a</a>).
+        </p>
+        <p><i><b>Design e filosofia inspirados no <a href="https://www.compgeolab.org/">Computational Oriented Geoscience Lab</a> do <a href="https://www.leouieda.com">Prof. Leonardo Uieda</a></i></b>.</p>
+        <p>
+          Copyright &copy; 2026 Murilo Henrique Moreira.
+          Exceto onde indicado, todo o conteúdo está licenciado sob
+          <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

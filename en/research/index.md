@@ -35,5 +35,6 @@ background-color: #9e9a9a; text-align: center; box-shadow: 0 0 0 4px black; outl
 <p>🚧 New content will be available here soon. <b>Check back soon!</b> 🚧 </p>
 </div>
 
-<div style="min-height: 20vh;>
+<div style="min-height: 20vh;">
+
 </div>

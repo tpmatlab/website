@@ -26,7 +26,7 @@ In the future, we aim to foster a tightly connected community of researchers
 and students that can help out each other and grow together.
 
 To help you answer the question of **why you want to join the team**, you can
-check out our {{ macros.page_link("manual/expectations", page, site)}} page so
+check out our {{ macros.page_link("en/manual/expectations", page, site)}} page so
 you can discover what are the commitments and responsibilities of both the lab
 members and Murilo.
 
