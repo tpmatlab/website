@@ -8,10 +8,10 @@
   {{ page.body }}
 
 
-<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<b>The background of this page
-   is inspired by the way images are represented digitally, where each pixel stores a color.
-    Their three-dimensional counterparts, voxels, form the basis of many full-field analyses.
-  </b></div>
+<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&thinsp;<b>{{ "O fundo desta página é inspirado na representação digital de imagens, onde cada pixel armazena o valor que representa uma cor. A extensão dos pixels em três dimensões são os voxels, utilizados para descrever imagens de tomografia." if page.id.startswith('pt/') else "The background of this page is inspired by the way images are represented digitally, where each pixel stores a color. Their three-dimensional counterparts, voxels, form the basis of many full-field analyses." }}</b></div>
+
+
+
 <script>
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');

@@ -1,6 +1,6 @@
-# Souce code for compgeolab.org
+# Source code for [tpmatlab.org](https://tpmatlab.github.io/)
 
-[![build-html](https://github.com/compgeolab/website/workflows/build-html/badge.svg?event=push)](https://github.com/compgeolab/website/actions?query=workflow%3Abuild-html)
+[![build-html](https://github.com/tpmatlab/website/workflows/build-html/badge.svg?event=push)](https://github.com/tpmatlab/website/actions?query=workflow%3Abuild-html)
 
 ## Making changes to the site
 
@@ -9,11 +9,17 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 ## Automatic deploy of HTML to GitHub Pages
 
 The site is automatically built and deployed to
-[compgeolab/compgeolab.github.io](https://github.com/compgeolab/compgeolab.github.io)
+[tpmatlab/tpmatlab.github.io](https://github.com/tpmatlab/tpmatlab.github.io)
 by the GitHub Actions service.
 Every time a commit is pushed to the *main* branch, the HTML is compiled and
 the website is updated.
 See `.github/workflows/build.yml` for the configuration.
+
+## Credit
+
+This workflow is based on the [Computer-Oriented
+Geoscience Lab](https://www.compgeolab.org/).
+
 
 ## License
 

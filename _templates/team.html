@@ -4,8 +4,10 @@
   {{ page.body }}
 
 
-<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<b>The background of this page 
-  is inspired by an evolving network graph representing the formation of new collaborations.</b></div>
+<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&thinsp;<b>{{ "O fundo desta página é inspirado em um grafo em constante evolução representando a formação de novas colaborações." if page.id.startswith('pt/') else "The background of this page 
+  is inspired by an evolving network graph representing the formation of new collaborations." }}</b></div>
+
+
 <script>
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');

@@ -1,6 +1,7 @@
-site_name: "Transport Phenomena in Materials Team"
-site_description: "Transport Phenomena in Materials Team website (TBT)"
-brand: "images/tpmat-banner-light.svg"
+site_name: "TPMaT - Transport Phenomena in Materials Team"
+site_description: "Transport Phenomena in Materials Team website"
+brand_en: "images/tpmat-banner-light.svg"
+brand_pt: "images/tpmat-banner-light-ptbr.svg"
 favicon: "images/favicon.png"
 thumbnail: "images/thumbnail.jpg"
 url: "http://tpmatlab.github.io/"
@@ -14,28 +15,41 @@ github: tpmatlab
 linkedin: murilo-henrique-moreira
 researchgate: TBT
 zenodo: tpmat
-department_url: https://www.dema.ufscar.br/en/home?set_language=en
-university_url: https://www.ufscar.br/foreign-visitor/about-ufscar
-country_url: https://www.gov.br/planalto/en
+department_url_en: https://www.dema.ufscar.br/en/home?set_language=en
+department_url_ptbr: https://www.dema.ufscar.br/
+university_url_en: https://www.ufscar.br/foreign-visitor/about-ufscar
+university_url_ptbr: https://www.ufscar.br/
+country_url_en: https://www.gov.br/planalto/en
+country_url_ptbr: https://www.gov.br/planalto/pt-br
 location:
   department: Departamento de Engenharia de Materiais
   center: Centro de Ciências Exatas e de Tecnologia
   grad_school: Programa de Pós-Graduação em Ciência e Engenharia de Materiais
   university: Universidade Federal de São Carlos
   country: Brasil
-language: en
 keywords: 'materials engineering, materials science, transport phenomena, tomography, FEM, open-source'
-navigation:
+navigation_en:
   - name: <i class="fa fa-home"></i> Home
-    id: index
+    id: en/index
   - name: <i class="fa fa-newspaper"></i> News
-    id: news/index
+    id: en/news/index
   - name: <i class="fa fa-users"></i> Team
-    id: team/index
+    id: en/team/index
   - name: <i class="fa fa-flask"></i> Research
-    id: research/index
+    id: en/research/index
   - name: <i class="fa fa-book"></i> Manual
-    id: manual/index
+    id: en/manual/index
+navigation_pt:
+  - name: <i class="fa fa-home"></i> Início
+    id: pt/index
+  - name: <i class="fa fa-newspaper"></i> Notícias
+    id: pt/news/index
+  - name: <i class="fa fa-users"></i> Equipe
+    id: pt/team/index
+  - name: <i class="fa fa-flask"></i> Pesquisa
+    id: pt/research/index
+  - name: <i class="fa fa-book"></i> Manual
+    id: pt/manual/index
 ignore:
   - README.md
   - LICENSE.md

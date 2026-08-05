@@ -19,8 +19,8 @@
     {%- endfor %}
   </ul>
 
-<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<b>The background of this page 
-  is inspired by the finite element meshes that we use on our codes to discretize physical space.</b></div>
+<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<b>{{ "O fundo desta página é inspirado nas malhas de elementos finitos que utilizamos em nossos códigos para discretizar o espaço físico." if page.id.startswith('pt/') else "The background of this page is inspired by the finite element meshes that we use on our codes to discretize physical space." }}</b></div>
+
 <script>
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');

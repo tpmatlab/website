@@ -3,13 +3,17 @@
 {%- import "macros.html" as macros %}
 
 {%- block content %}
+  {%- set lang_root = page.id.split('/')[0] %}
+  {%- set news_index_id = lang_root ~ "/news/index" %}
+  {%- set latest_label = "Últimas notícias da equipe" if page.id.startswith('pt/') else "Latest from the team" %}
+  {%- set latest_desc = "As últimas novidades e atualizações dos membros do TPMaT." if page.id.startswith('pt/') else "The latest news and updates from TPMaT members." %}
   {{ page.body }}
-  <h2>Latest from the team</h2>
+  <h2>{{ latest_label }}</h2>
   <p>
-    The latest news and updates from TPMaT members.
+    {{ latest_desc }}
   </p>
   <ul class="flow fa-ul">
-    {%- for item in (site["news/index"]["siblings"]|sort(attribute="date", reverse=True)|list)[:3] %}
+    {%- for item in (site[news_index_id]["siblings"]|sort(attribute="date", reverse=True)|list)[:3] %}
       <li>
         <i class="fa-li far fa-square-caret-right fa-fw" aria-hidden="true"></i>
         <a class="text-bold" href="{{ item.path|relative_to(page.path) }}">{{ item.title }}</a>
@@ -19,12 +23,11 @@
     {%- endfor %}
   </ul>
   <!-- <p>
-    More news items can be found in: <b>{{ macros.page_link_icon("news/index", page, site, "fa fa-newspaper") }}</b>.
+    More news items can be found in: <b>{{ macros.page_link_icon("en/news/index", page, site, "fa fa-newspaper") }}</b>.
   </p> -->
 
 
-<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&thinsp;<b>The background of this page 
-  is inspired by the microstructure of materials using a Voronoi diagram to represent grain boundary evolution.</b></div>
+<div class="callout" style="font-size: 1rem;"><i class="fa fa-info-circle" aria-hidden="true"></i>&thinsp;<b>{{ "O fundo desta página é inspirado na microestrutura dos materiais, usando um diagrama de Voronoi para representar a evolução dos contornos de grão." if page.id.startswith('pt/') else "The background of this page is inspired by the microstructure of materials using a Voronoi diagram to represent grain boundary evolution." }}</b></div>
 
 <script>
 const canvas = document.getElementById('canvas');
