@@ -658,15 +658,40 @@ blockquote > * + *, figure > * + *, .callout > * + * {
   border-left: 1px solid var(--color-border, #ccc);
   padding-left: 0.75rem;
   margin-left: 0.25rem;
+  position: relative;
 }
 .lang-current {
+  display: inline-flex;
   color: var(--color-accent, #2F6FE0);
+  flex: 0 0 auto;
 }
+
+.lang-current img {
+    width: 1.2em;
+    height: auto;
+    margin-right: 0.3em;
+    opacity: 1;
+    flex-shrink: 0;
+}
+
+
 .lang-alt {
+  display: inline-flex;
+  flex: 0 0 auto;
   opacity: 0.6;
   font-size: 0.85rem!important;
   text-decoration: none;
+  
 }
+
+.lang-alt img {
+    width: 1.2em;
+    height: auto;
+    margin-right: 0.3em;
+    flex-shrink: 0;
+    opacity: 1;
+}
+
 .lang-alt:hover {
   opacity: 1;
 }

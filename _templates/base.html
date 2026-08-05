@@ -85,8 +85,8 @@
           {%- endif %}
           {%- if alt_path is defined %}
           <li class="lang-selector">
-            <span class="lang-current">{{ current_lang }}</span>
-            <a class="lang-alt" href="{{ alt_path|relative_to(page.path) }}" aria-label="Switch language">{{ alt_lang }}</a>
+            <span class="lang-current"><img style="height: auto;" src="{{ "/images/flags/" ~ current_lang|lower ~ ".svg" }}" alt="{{ current_lang }} flag">{{ current_lang }}</span>
+            <a class="lang-alt" href="{{ alt_path|relative_to(page.path) }}" aria-label="Switch language"><img style="height: auto;" src="{{ "/images/flags/" ~ alt_lang|lower ~ ".svg" }}" alt="{{ alt_lang }} flag">{{ alt_lang }}</a>
           </li>
           {%- endif %}
         </ul>
