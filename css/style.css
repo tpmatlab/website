@@ -243,6 +243,7 @@ blockquote > * + *, figure > * + *, .callout > * + * {
   max-width: 1320px;
   margin-left: auto;
   margin-right: auto;
+  
 }
 
 .brand{
@@ -703,7 +704,7 @@ blockquote > * + *, figure > * + *, .callout > * + * {
   }
 
   .brand {
-    height: 38px;
+    height: 58px;
   }
 
   .spread {
@@ -717,6 +718,37 @@ blockquote > * + *, figure > * + *, .callout > * + * {
 .nav-toggle-label { display: none; }
 
 @media (max-width: 768px) {
+
+  h1 {
+    font-size: var(--size-2);
+  }
+
+  h2 {
+    font-size: var(--size-2);
+    border-bottom: 2px solid var(--color-secondary);
+  }
+
+  h3 {
+    font-size: var(--size-0);
+  }
+
+  .content-wide {
+  height: 6vh;
+  transition: height 0.35s ease-in;
+
+  }
+
+  footer {
+  padding-left: var(--space-2xs);
+  padding-right: var(--space-2xs);
+  margin-top: var(--space-s);
+  line-height: 2;
+  }
+
+  .footer-social-text {
+    display: none
+  }
+
   /* Show hamburger button */
   .nav-toggle-label {
     display: flex;
@@ -749,9 +781,16 @@ blockquote > * + *, figure > * + *, .callout > * + * {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease;
+    padding: 0 var(--space-2xs) var(--space-3xs);
+
   }
 
   /* Open state */
+  .content-wide:has(.nav-toggle:checked) {
+    height: 35vh;
+    transition: height 0.35s ease-out;
+
+  }
   .nav-toggle:checked ~ nav {
     max-height: 600px;
     margin-top: 1vh;
