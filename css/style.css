@@ -733,7 +733,7 @@ blockquote > * + *, figure > * + *, .callout > * + * {
   }
 
   .content-wide {
-  height: 6vh;
+  height: 60px;
   transition: height 0.35s ease-in;
 
   }
@@ -771,7 +771,7 @@ blockquote > * + *, figure > * + *, .callout > * + * {
   .nav-icon-open  { display: inline; }
 
   /* When open: swap to X */
-  .nav-toggle:checked ~ .nav-toggle-label .nav-icon-open  { display: none; }
+  .nav-toggle:checked ~ .nav-toggle-label .nav-icon-open { display: none; }
   .nav-toggle:checked ~ .nav-toggle-label .nav-icon-close { display: inline; }
 
   /* Nav collapses on mobile; order:10 pushes it to its own row */
@@ -787,14 +787,12 @@ blockquote > * + *, figure > * + *, .callout > * + * {
 
   /* Open state */
   .content-wide:has(.nav-toggle:checked) {
-    height: 35vh;
+    height: 270px;
     transition: height 0.35s ease-out;
 
   }
   .nav-toggle:checked ~ nav {
     max-height: 600px;
-    margin-top: 1vh;
-    padding-top: 1vh;
     border-top: 2px solid var(--lt-color-gray-500);
   }
 
@@ -802,7 +800,7 @@ blockquote > * + *, figure > * + *, .callout > * + * {
   header nav ul.list-inline {
     flex-direction: column;
     align-items: flex-start;
-    /*padding: var(--space-2xs) var(--gutter);*/
+    padding-top: var(--space-3xs);
     gap: var(--space-xs);
     font-size: var(--size-1);
   }

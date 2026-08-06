@@ -1,7 +1,7 @@
 site_name: "TPMaT - Transport Phenomena in Materials Team"
 site_description: "Transport Phenomena in Materials Team website"
 brand_en: "images/tpmat-banner-light.svg"
-brand_pt: "images/tpmat-banner-light-ptbr.svg"
+brand_pt: "images/tpmat-banner-light-pt.svg"
 favicon: "images/favicon.png"
 thumbnail: "images/thumbnail.jpg"
 url: "http://tpmatlab.github.io/"
