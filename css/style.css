@@ -40,11 +40,6 @@
   --block-border: 0.35em;
 }
 
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 body {
   background: var(--color-light);
   color: var(--color-dark);
@@ -248,6 +243,7 @@ blockquote > * + *, figure > * + *, .callout > * + * {
   max-width: 1320px;
   margin-left: auto;
   margin-right: auto;
+  
 }
 
 .brand{
@@ -469,8 +465,6 @@ blockquote > * + *, figure > * + *, .callout > * + * {
   canvas {
     display: block;
     position: fixed;
-    height: 100vh;
-    width: 100vw;
     inset: 0;
     z-index: -1;
 
@@ -710,7 +704,7 @@ blockquote > * + *, figure > * + *, .callout > * + * {
   }
 
   .brand {
-    height: 58px;
+    height: 140px;
   }
 
   .spread {
@@ -738,11 +732,6 @@ blockquote > * + *, figure > * + *, .callout > * + * {
     font-size: var(--size-0);
   }
 
-  .content-wide {
-  height: 60px;
-  transition: height 0.35s ease-in;
-
-  }
 
   footer {
   padding-left: var(--space-2xs);
@@ -755,75 +744,91 @@ blockquote > * + *, figure > * + *, .callout > * + * {
     display: none
   }
 
-  /* Show hamburger button */
-  .nav-toggle-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: var(--size-1);
-    color: var(--color-dark);
-    padding: var(--space-2xs);
-    user-select: none;
-  }
-
-  /* Brand logo fills remaining width next to hamburger */
-  header .spread > a:first-child {
-    flex: 1;
-  }
-
-  /* Default: show bars, hide X */
-  .nav-icon-close { display: none; }
-  .nav-icon-open  { display: inline; }
-
-  /* When open: swap to X */
-  .nav-toggle:checked ~ .nav-toggle-label .nav-icon-open { display: none; }
-  .nav-toggle:checked ~ .nav-toggle-label .nav-icon-close { display: inline; }
-
-  /* Nav collapses on mobile; order:10 pushes it to its own row */
-  header nav {
-    order: 10;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-    padding: 0 var(--space-2xs) var(--space-3xs);
-
-  }
-
-  /* Open state */
-  .content-wide:has(.nav-toggle:checked) {
-    height: 270px;
-    transition: height 0.35s ease-out;
-
-  }
-  .nav-toggle:checked ~ nav {
-    max-height: 600px;
-    border-top: 2px solid var(--lt-color-gray-500);
-  }
-
-  /* Stack links vertically with larger font */
-  header nav ul.list-inline {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: var(--space-3xs);
-    gap: var(--space-xs);
-    font-size: var(--size-1);
-  }
-
-  header nav ul.list-inline a {
-    font-size: var(--size-0);
-  }
-
-  /* Underline animation looks odd vertically — switch to solid */
-  header nav a::after { display: none; }
-  header nav a:hover  { text-decoration: underline; }
-
-  /* Lang selector: remove left border on mobile */
-  .lang-selector {
+  .lang-selector{
     border-left: none;
     padding-left: 0;
-    margin-left: auto;
+    padding-right: 1em;
+    margin-right: 1em;
+  }
 
+}
+
+/* Mobile-first approach: Hide desktop figure by default */
+.figure-desktop {
+  display: none;
+}
+
+.figure-mobile {
+  display: block;
+}
+
+.banner-container{
+  display: flex;
+  flex-direction: column; /* Stacked vertically on mobile */
+  align-items: center;    /* Centered text and image on mobile */
+}
+
+/* Desktop screen breakpoint (769px and up) */
+@media screen and (min-width: 769px) {
+  .figure-mobile {
+    display: none; /* Hide mobile figure on desktop */
+  }
+  .figure-desktop {
+    display: block; /* Show desktop figure on desktop */
   }
 }
+
+.banner-container--split {
+  margin-top: 0.5em;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  /* align-items: flex-start; */
+  gap: var(--gutter);
+}
+
+.nav-side {
+  margin-top: 2em;
+  display: flex;
+}
+
+.nav-left {
+  justify-content: flex-start; /* gruda na borda esquerda do container */
+}
+
+.nav-right {
+  justify-content: flex-end;   /* gruda na borda direita do container */
+}
+
+.logo-center {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-right .list-inline  {
+  justify-content: flex-end;   /* gruda na borda direita do container */
+}
+
+@media screen and (min-width: 769px) {
+  .banner-container--split {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; /* não usar space-between aqui */
+    gap: var(--gutter);
+  }
+
+  .logo-center {
+    order: 1;
+  }
+
+  .nav-left {
+    order: 2;
+    margin-left: auto; /* empurra nav-left + nav-right juntos pra direita */
+  }
+
+  .nav-right {
+    order: 3;
+  }
+}
+

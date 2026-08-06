@@ -2,6 +2,7 @@
 {%- set pt = page.id.startswith('pt/') -%}
 {%- set nav = config.navigation_pt if pt else config.navigation_en -%}
 {%- set brand = config.brand_pt if pt else config.brand_en -%}
+{%- set brand_mobile = config.brand_mobile_pt if pt else config.brand_mobile_en -%}
 {%- set department_url = config.department_url_pt if pt else config.department_url_en -%}
 {%- set university_url = config.university_url_pt if pt else config.university_url_en -%}
 {%- set country_url = config.country_url_pt if pt else config.country_url_en -%}
@@ -63,40 +64,44 @@
 <canvas id="canvas"></canvas>
 
   <header>
-    <div class="spread content-wide">
-      <a href="{{ site[page.id.split('/')[0] ~ '/index'].path|relative_to(page.path) }}">
-        <img class="brand" src="{{ brand|relative_to(page.path) }}" alt="{{ config.site_name }}">
-      </a>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
-      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
-        <i class="fa fa-bars nav-icon-open" aria-hidden="true"></i>
-        <i class="fa fa-xmark nav-icon-close" aria-hidden="true"></i>
-      </label>
-      <nav aria-label="Main">
-        <ul class="list-inline" role="list">
-          {%- for item in nav %}
-            <li>
-              {{ macros.nav_link(item, page, site) }}
-            </li>
-          {%- endfor %}
-          {%- if page.path.startswith('en/') %}
-            {%- set alt_path = page.path|replace('en/', 'pt/', 1) %}
-            {%- set current_lang = 'EN' %}
-            {%- set alt_lang = 'PT' %}
-          {%- elif page.path.startswith('pt/') %}
-            {%- set alt_path = page.path|replace('pt/', 'en/', 1) %}
-            {%- set current_lang = 'PT' %}
-            {%- set alt_lang = 'EN' %}
-          {%- endif %}
-          {%- if alt_path is defined %}
-          <li class="lang-selector">
-            <span class="lang-current"><img style="height: auto;" src="{{ "/images/flags/" ~ current_lang|lower ~ ".svg" }}" alt="{{ current_lang }} flag">{{ current_lang }}</span>
-            <a class="lang-alt" href="{{ alt_path|relative_to(page.path) }}" aria-label="Switch language"><img style="height: auto;" src="{{ "/images/flags/" ~ alt_lang|lower ~ ".svg" }}" alt="{{ alt_lang }} flag">{{ alt_lang }}</a>
-          </li>
-          {%- endif %}
-        </ul>
-      </nav>
-    </div>
+  <div class="spread content-wide banner-container banner-container--split">
+    <nav class="nav-side nav-left" aria-label="Main">
+      <ul class="list-inline" role="list">
+        {%- for item in nav[:3] %}
+          <li>{{ macros.nav_link(item, page, site) }}</li>
+        {%- endfor %}
+      </ul>
+    </nav>
+
+    <a class="logo-center" href="{{ site[page.id.split('/')[0] ~ '/index'].path|relative_to(page.path) }}">
+      <img class="brand figure-desktop" src="{{ brand|relative_to(page.path) }}" alt="{{ config.site_name }}">
+      <img class="brand figure-mobile" src="{{ brand_mobile|relative_to(page.path) }}" alt="{{ config.site_name }}">
+    </a>
+
+    {%- if page.path.startswith('en/') %}
+      {%- set alt_path = page.path|replace('en/', 'pt/', 1) %}
+      {%- set current_lang = 'EN' %}
+      {%- set alt_lang = 'PT' %}
+    {%- elif page.path.startswith('pt/') %}
+      {%- set alt_path = page.path|replace('pt/', 'en/', 1) %}
+      {%- set current_lang = 'PT' %}
+      {%- set alt_lang = 'EN' %}
+    {%- endif %}
+
+    <nav class="nav-side nav-right" aria-label="Main secondary">
+      <ul class="list-inline" role="list">
+        {%- for item in nav[3:] %}
+          <li>{{ macros.nav_link(item, page, site) }}</li>
+        {%- endfor %}
+        {%- if alt_path is defined %}
+        <li class="lang-selector">
+          <span class="lang-current"><img style="height: auto;" src="{{ "/images/flags/" ~ current_lang|lower ~ ".svg" }}" alt="{{ current_lang }} flag">{{ current_lang }}</span>
+          <a class="lang-alt" href="{{ alt_path|relative_to(page.path) }}" aria-label="Switch language"><img style="height: auto;" src="{{ "/images/flags/" ~ alt_lang|lower ~ ".svg" }}" alt="{{ alt_lang }} flag">{{ alt_lang }}</a>
+        </li>
+        {%- endif %}
+      </ul>
+    </nav>
+  </div>
   </header>
 
   <main class="flow">
