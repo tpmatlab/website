@@ -21,6 +21,14 @@ current:
     lattes: "6464099088987675"
     website: https://murilohmoreira.github.io/
 
+  - nome: Matheus Santos de Oliveira
+    role: Graduate Student
+    affiliation: Universidade Federal de São Carlos, Brasil
+    pronouns: he/him
+    GitHub: matheusso-create
+    e-mail: matheusso@estudante.ufscar.br
+    orcid: 0009-0008-0407-2761
+    website: https://matheusso-create.github.io
   
 # List of external collaborators
 collaborators:
