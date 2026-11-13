@@ -20,7 +20,18 @@ current:
     researchgate: Murilo-Moreira-2
     lattes: "6464099088987675"
     website: https://murilohmoreira.github.io/
-
+    
+  - name: Omar Khatir
+    role: Post-Doc Researcher
+    affiliation: Federal University of São Carlos, Brazil
+    pronouns: he/him
+    github: omarkhatir
+    email: khatiromar@ufscar.br
+    orcid: 0009-0004-3370-5944
+    google_scholar: 3pRMkNYAAAAJ
+    researchgate: Omar-Khatir
+    lattes: "0262503012829945"
+    
   - name: Matheus Santos de Oliveira
     role: Graduate Student
     affiliation: Universidade Federal de São Carlos, Brasil
